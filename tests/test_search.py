@@ -1,4 +1,4 @@
-from part_finder.search import search_part_numbers
+from part_finder.search import search_part_numbers, semantic_catalog_match_tool
 
 
 def test_search_returns_top_k_and_is_deterministic():
@@ -30,3 +30,30 @@ def test_catalog_wide_typo_search():
     results = search_part_numbers("Owe ling part number", top_k=3)
     assert results
     assert any("O-ring" in str(result["part_name"]) for result in results)
+
+
+def test_search_filters_by_vendor_for_vacuum_gauge():
+    results = search_part_numbers("베큠게이지", top_k=3, vendor_query="Lam Research")
+    assert results
+    assert all(result["vendor"] == "Lam Research" for result in results)
+    assert all("Vacuum Gauge" in str(result["part_name"]) for result in results)
+    assert all("Gate Valve" not in str(result["part_name"]) for result in results)
+
+
+def test_search_filters_by_equipment_model():
+    results = search_part_numbers("슬릿밸브", top_k=3, equipment_query="Endura")
+    assert results
+    assert all(result["equipment_module"] == "Endura" for result in results)
+    assert all("Slit Valve" in str(result["part_name"]) for result in results)
+
+
+def test_semantic_catalog_match_maps_robot_arm_pick_to_robot_blade():
+    results = semantic_catalog_match_tool(
+        "ASML equipment robot arm pick part number",
+        top_k=3,
+        vendor_query="ASML",
+    )
+
+    assert results
+    assert all(result["vendor"] == "ASML" for result in results)
+    assert all("Robot Blade" in str(result["description"]) for result in results)

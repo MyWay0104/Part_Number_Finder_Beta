@@ -19,3 +19,8 @@ def test_detect_query_type():
     assert detect_query_type("MFC") == "abbreviation"
     assert detect_query_type("라이너쿼츠") == "korean"
     assert detect_query_type("Liner Quartz") == "english"
+
+
+def test_current_korean_aliases_normalize():
+    assert normalize_query("램리서치 장비의 베큠게이지 파트넘버 알려줘") == "Vacuum Gauge"
+    assert normalize_query("엔듀라 모델 슬릿밸브 파트넘버") == "Slit Valve"

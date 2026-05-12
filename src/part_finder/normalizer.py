@@ -5,15 +5,48 @@ import re
 from part_finder.data_loader import load_aliases
 
 
-_KOREAN_RE = re.compile(r"[가-힣]")
+_KOREAN_RE = re.compile(r"[가-힣ㄱ-ㅎㅏ-ㅣ]")
 _ENGLISH_RE = re.compile(r"[A-Za-z]")
+
+BUILTIN_ALIASES = {
+    "Vacuum Gauge": ["베큠게이지", "베큠 게이지", "진공게이지", "진공 게이지", "vacuum gauge"],
+    "Gate Valve": ["게이트밸브", "게이트 밸브", "gate valve"],
+    "Slit Valve": ["슬릿밸브", "슬릿 밸브", "slit valve"],
+    "Throttle Valve": ["스로틀밸브", "스로틀 밸브", "throttle valve"],
+    "Ceramic Plate": ["세라믹플레이트", "세라믹 플레이트", "ceramic plate"],
+    "Ion Source": ["이온소스", "이온 소스", "ion source"],
+    "Liner Quartz": ["라이너쿼츠", "라이너 쿼츠", "liner quartz"],
+    "Window Quartz": ["윈도우쿼츠", "윈도우 쿼츠", "window quartz", "wq", "w/q"],
+}
+
+
+def _aliases_with_builtins() -> dict[str, list[str]]:
+    aliases = load_aliases()
+    merged = {target: list(values) for target, values in aliases.items()}
+    for target, values in BUILTIN_ALIASES.items():
+        merged.setdefault(target, [])
+        merged[target].extend(value for value in values if value not in merged[target])
+    return merged
 
 
 def simplify_text(value: str) -> str:
-    """Create a comparison key that ignores case, spacing, and most punctuation."""
-    value = value.strip().lower()
-    value = value.replace("/", "")
-    return re.sub(r"[^0-9a-z가-힣]+", "", value)
+    """Create a comparison key that ignores case, spacing, and punctuation."""
+    value = value.strip().lower().replace("/", "")
+    return "".join(char for char in value if char.isalnum())
+
+
+def _has_korean_like_text(value: str) -> bool:
+    return bool(_KOREAN_RE.search(value)) or any(ord(char) > 127 and char.isalpha() for char in value)
+
+
+def _alias_matches(cleaned_query: str, simplified_query: str, alias: str) -> bool:
+    simplified_alias = simplify_text(alias)
+    if not simplified_alias:
+        return False
+    if len(simplified_alias) <= 3:
+        token_keys = [simplify_text(token) for token in re.split(r"\s+", cleaned_query)]
+        return simplified_alias in token_keys or simplified_query.startswith(simplified_alias)
+    return simplified_alias in simplified_query
 
 
 def normalize_query(query: str) -> str:
@@ -23,16 +56,15 @@ def normalize_query(query: str) -> str:
         return ""
 
     simplified_query = simplify_text(cleaned)
-    aliases = load_aliases()
+    aliases = _aliases_with_builtins()
     for target, alias_values in aliases.items():
         values = [target, *alias_values]
         for alias in values:
-            simplified_alias = simplify_text(alias)
-            if simplified_alias and simplified_alias in simplified_query:
+            if _alias_matches(cleaned, simplified_query, alias):
                 return target
 
     # Keep English terms readable and title-cased; Korean queries are left as-is.
-    if _ENGLISH_RE.search(cleaned) and not _KOREAN_RE.search(cleaned):
+    if _ENGLISH_RE.search(cleaned) and not _has_korean_like_text(cleaned):
         return cleaned.title()
     return cleaned
 
@@ -41,14 +73,15 @@ def detect_query_type(query: str) -> str:
     """Classify the input shape for routing or future LangGraph nodes."""
     stripped = query.strip()
     simplified = simplify_text(stripped)
-    aliases = load_aliases()
+    aliases = _aliases_with_builtins()
     abbreviation_keys = {"wq", "tv", "pmkit", "mfc", "rfmatch", "escchuck"}
     for target, alias_values in aliases.items():
         for alias in [target, *alias_values]:
-            if simplify_text(alias) in abbreviation_keys and simplify_text(alias) in simplified:
+            alias_key = simplify_text(alias)
+            if alias_key in abbreviation_keys and _alias_matches(stripped, simplified, alias):
                 return "abbreviation"
 
-    has_korean = bool(_KOREAN_RE.search(stripped))
+    has_korean = _has_korean_like_text(stripped)
     has_english = bool(_ENGLISH_RE.search(stripped))
     if has_korean and has_english:
         return "mixed"

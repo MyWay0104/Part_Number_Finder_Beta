@@ -1,44 +1,20 @@
 from __future__ import annotations
 
 import json
-import os
 from datetime import datetime, timezone
 from functools import wraps
-from pathlib import Path
 from typing import Any, Callable, TypeVar
 
-from part_finder.config import DATA_DIR
-
-try:
-    from dotenv import load_dotenv
-
-    load_dotenv()
-except ImportError:  # pragma: no cover - dotenv is optional at runtime.
-    pass
-
-# The user's .env may already contain LANGSMITH_TRACING=true for other projects.
-# For this closed-network PoC, avoid blocking CLI/test runs unless explicitly
-# enabled for this app. Existing LangSmith key/endpoint/project are still used
-# when PART_FINDER_TRACE_LANGSMITH=1 is set.
-if not str(os.getenv("PART_FINDER_TRACE_LANGSMITH", "0")).strip().lower() in {"1", "true", "yes", "on"}:
-    os.environ["LANGSMITH_TRACING"] = "false"
+from part_finder.config import DATA_DIR, configure_langsmith_env
 
 
 F = TypeVar("F", bound=Callable[..., Any])
 FAILURE_LOG_PATH = DATA_DIR / "search_failures.jsonl"
 
 
-def _truthy(value: str | None) -> bool:
-    return str(value or "").strip().lower() in {"1", "true", "yes", "y", "on"}
-
-
 def langsmith_enabled() -> bool:
     """Return True only when LangSmith tracing is configured in .env."""
-    return (
-        _truthy(os.getenv("PART_FINDER_TRACE_LANGSMITH"))
-        and _truthy(os.getenv("LANGSMITH_TRACING"))
-        and bool(os.getenv("LANGSMITH_API_KEY"))
-    )
+    return configure_langsmith_env()
 
 
 def traceable_run(name: str, run_type: str = "chain") -> Callable[[F], F]:
