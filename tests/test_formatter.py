@@ -1,4 +1,5 @@
 from part_finder.formatter import LOW_CONFIDENCE_MESSAGE, format_answer
+from part_finder.final_responder import final_answer
 
 
 def test_format_no_result():
@@ -38,3 +39,23 @@ def test_format_catalog_name_answer_with_context():
         ],
     )
     assert answer == "Lam Research / Etch Module 기준 Vacuum Gauge의 파트넘버는 P2200044 입니다."
+
+
+def test_final_answer_falls_back_when_llm_would_not_have_rows(monkeypatch):
+    monkeypatch.setenv("PART_FINDER_USE_LLM", "0")
+
+    answer = final_answer(
+        "robot arm pick part number",
+        "Robot Blade",
+        [
+            {
+                "part_number": "P2200013",
+                "part_name": "Robot Blade 019",
+                "description": "Robot Blade for Implant Module",
+                "score": 100,
+            }
+        ],
+    )
+
+    assert "P2200013" in answer
+    assert "Robot Blade" in answer

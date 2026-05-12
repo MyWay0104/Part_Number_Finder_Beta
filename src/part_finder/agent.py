@@ -13,11 +13,13 @@ from part_finder.search import (
     hybrid_search_tool,
     korean_name_search_tool,
     semantic_catalog_match_tool,
+    vector_semantic_search_tool,
 )
 from part_finder.tracing import log_search_failure, traceable_run
 
 
 LOW_CONFIDENCE_THRESHOLD = 70.0
+SEMANTIC_CONFIDENCE_THRESHOLD = 35.0
 
 
 @dataclass(frozen=True)
@@ -78,6 +80,8 @@ def _call_tool(
 ) -> list[dict[str, object]]:
     if tool_name == "semantic_catalog_match_tool":
         return semantic_catalog_match_tool(query, top_k=top_k, equipment_query=equipment_query, vendor_query=vendor_query)
+    if tool_name == "vector_semantic_search_tool":
+        return vector_semantic_search_tool(query, top_k=top_k, equipment_query=equipment_query, vendor_query=vendor_query)
     if tool_name == "filter_part_rows_tool":
         return filter_part_rows_tool(query, top_k=top_k, equipment_query=equipment_query, vendor_query=vendor_query)
     if tool_name == "aggregate_part_rows_tool":
@@ -139,6 +143,28 @@ def _confirmation_payload(
         "equipment_query": equipment_query,
         "vendor_query": vendor_query,
     }
+
+
+def _last_confirm(
+    rows: list[dict[str, object]],
+    threshold: float = LOW_CONFIDENCE_THRESHOLD,
+) -> tuple[str, list[dict[str, object]]]:
+    """Confirm final rows came from tools and satisfy the confidence policy."""
+    confirmed: list[dict[str, object]] = []
+    seen: set[str] = set()
+    for row in rows:
+        part_number = str(row.get("part_number") or "")
+        if not part_number or part_number in seen:
+            continue
+        try:
+            score = float(row.get("score", 0.0))
+        except (TypeError, ValueError):
+            score = 0.0
+        if score < threshold:
+            continue
+        seen.add(part_number)
+        confirmed.append(row)
+    return ("confirmed" if confirmed else "needs_clarification", confirmed)
 
 
 @traceable_run(name="part_number_finder_agent", run_type="chain")
@@ -221,7 +247,7 @@ def answer_query_result(
         results = semantic_catalog_match_tool(semantic_query, top_k=top_k, equipment_query=equipment_query, vendor_query=vendor_query)
         best_score = _score_value(results[0] if results else None)
         payload = _confirmation_payload(query, intent, requested_fields, results, equipment_query, vendor_query)
-        if payload and best_score >= LOW_CONFIDENCE_THRESHOLD:
+        if payload and best_score >= SEMANTIC_CONFIDENCE_THRESHOLD:
             return AnswerResult(
                 answer=format_confirmation_prompt(query, results, route.confirmation_reason),
                 best_score=best_score,
@@ -254,7 +280,7 @@ def answer_query_result(
         )
         semantic_score = _score_value(semantic_results[0] if semantic_results else None)
         payload = _confirmation_payload(query, intent, requested_fields, semantic_results, equipment_query, vendor_query)
-        if payload and semantic_score >= LOW_CONFIDENCE_THRESHOLD:
+        if payload and semantic_score >= SEMANTIC_CONFIDENCE_THRESHOLD:
             return AnswerResult(
                 answer=format_confirmation_prompt(query, semantic_results, route.confirmation_reason),
                 best_score=semantic_score,
@@ -282,11 +308,13 @@ def answer_query_result(
             }
         )
 
+    confirm_status, confirmed_results = _last_confirm(results)
+    final_results = confirmed_results if confirm_status == "confirmed" else results
     return AnswerResult(
-        answer=format_answer(query, used_candidate, results, requested_fields=requested_fields, intent=intent),
+        answer=format_answer(query, used_candidate, final_results, requested_fields=requested_fields, intent=intent),
         best_score=best_score,
-        needs_retry=best_score < LOW_CONFIDENCE_THRESHOLD,
-        rows=results,
+        needs_retry=confirm_status != "confirmed",
+        rows=final_results,
         intent=intent,
         requested_fields=requested_fields,
     )

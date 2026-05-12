@@ -11,21 +11,7 @@ except ImportError:  # pragma: no cover - exercised only when rapidfuzz is absen
 from part_finder.data_loader import load_part_data
 from part_finder.normalizer import normalize_query, simplify_text
 from part_finder.tracing import traced_tool
-
-
-SEMANTIC_HINTS = {
-    "Robot Blade": [
-        "robot arm pick transfer wafer handler end effector blade",
-        "robot blade arm pick place part",
-    ],
-    "ESC Chuck": ["wafer chuck electrostatic chuck holding stage"],
-    "MFC": ["gas flow mass flow controller flow control"],
-    "Vacuum Gauge": ["pressure gauge vacuum sensor pressure measurement"],
-    "Gate Valve": ["isolation valve gate chamber valve"],
-    "Slit Valve": ["slot valve slit door transfer opening valve"],
-    "Throttle Valve": ["pressure control valve throttle valve"],
-    "Shower Head": ["gas distribution plate showerhead gas injection"],
-}
+from part_finder.vector_index import SEMANTIC_HINTS, vector_search
 
 
 def _score(query: str, candidate: str) -> float:
@@ -187,6 +173,15 @@ def semantic_catalog_match_tool(
     if not rows:
         return []
 
+    vector_results = vector_semantic_search_tool(
+        query,
+        top_k=top_k,
+        equipment_query=equipment_query,
+        vendor_query=vendor_query,
+    )
+    if vector_results and float(vector_results[0].get("score", 0.0)) >= 35.0:
+        return vector_results
+
     ranked: list[dict[str, object]] = []
     for index, row in enumerate(rows):
         if equipment_query and not _field_matches(row.get("equipment_module", ""), equipment_query):
@@ -215,6 +210,26 @@ def semantic_catalog_match_tool(
         item.pop("_index", None)
         filtered.append(item)
     return _dedupe_rows(filtered, top_k)
+
+
+@traced_tool("vector_semantic_search_tool")
+def vector_semantic_search_tool(
+    query: str,
+    top_k: int = 3,
+    equipment_query: str = "",
+    vendor_query: str = "",
+) -> list[dict[str, object]]:
+    """Search CSV row chunks through a local TF-IDF vector index."""
+    ranked: list[dict[str, object]] = []
+    for item in vector_search(query, top_k=max(top_k * 4, 10)):
+        if equipment_query and not _field_matches(str(item.get("equipment_module") or ""), equipment_query):
+            continue
+        if vendor_query and not _field_matches(str(item.get("vendor") or ""), vendor_query):
+            continue
+        ranked.append(item)
+        if len(ranked) >= top_k:
+            break
+    return ranked
 
 
 @traced_tool("filter_part_rows_tool")

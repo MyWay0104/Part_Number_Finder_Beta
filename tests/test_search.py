@@ -1,4 +1,4 @@
-from part_finder.search import search_part_numbers, semantic_catalog_match_tool
+from part_finder.search import search_part_numbers, semantic_catalog_match_tool, vector_semantic_search_tool
 
 
 def test_search_returns_top_k_and_is_deterministic():
@@ -56,4 +56,17 @@ def test_semantic_catalog_match_maps_robot_arm_pick_to_robot_blade():
 
     assert results
     assert all(result["vendor"] == "ASML" for result in results)
+    assert all("Robot Blade" in str(result["description"]) for result in results)
+
+
+def test_vector_semantic_search_uses_csv_row_chunks():
+    results = vector_semantic_search_tool(
+        "ASML equipment robot arm pick part number",
+        top_k=3,
+        vendor_query="ASML",
+    )
+
+    assert results
+    assert all(result["vendor"] == "ASML" for result in results)
+    assert all(result.get("vector_match") for result in results)
     assert all("Robot Blade" in str(result["description"]) for result in results)

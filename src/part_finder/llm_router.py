@@ -43,6 +43,7 @@ ALLOWED_TOOLS = {
     "korean_name_search_tool",
     "hybrid_search_tool",
     "semantic_catalog_match_tool",
+    "vector_semantic_search_tool",
     "filter_part_rows_tool",
     "aggregate_part_rows_tool",
 }
@@ -236,6 +237,7 @@ Allowed tool_name values:
 - korean_name_search_tool
 - hybrid_search_tool
 - semantic_catalog_match_tool
+- vector_semantic_search_tool
 - filter_part_rows_tool
 - aggregate_part_rows_tool
 
@@ -246,7 +248,8 @@ Task:
 4. If the user describes a function/context not present as an exact part name, infer semantic_candidates from the local catalog only.
 5. Select one tool_name.
 6. Return multiple candidate_queries ordered from most likely to least likely.
-7. If semantic inference is needed, set requires_confirmation true and do not present it as certain.
+7. If semantic inference is needed, prefer vector_semantic_search_tool or semantic_catalog_match_tool,
+   set requires_confirmation true, and do not present it as certain.
 8. If uncertain, keep a cleaned user phrase and choose hybrid_search_tool.
 
 Korean pronunciation examples:
@@ -265,6 +268,7 @@ Important:
 - requested_fields can include part_number, part_name, description, vendor, equipment_module, vendor_part_number.
 - Use semantic_candidate when the user says contextual words like robot arm, pick, handler, transfer, pressure sensor, gas flow controller, or isolation door and the exact part name is not in the query.
 - Do not output part numbers.
+- The final answer will be written by another LLM pass using only tool-returned rows.
 
 Known catalog examples from the local data:
 {catalog_text}
