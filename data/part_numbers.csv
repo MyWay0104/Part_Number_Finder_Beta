@@ -1,0 +1,501 @@
+﻿part_number,part_name,description,equipment_module,vendor_part_number,vendor
+P2155479,윈도우쿼츠,Window Quartz,Vantage Radox,AMAT-WQ-2155479,AMAT
+P2100958,피엠킷,PM Kit for Helios XP,Helios XP,AMAT-PMK-2100958,AMAT
+P2100957,피엠키트,PM Kit for Helios XP,Helios XP,TEL-PMK-2100957,TEL
+P2100555,PM Kit,PM Kit for Helios XP,Helios XP,LAM-PMK-2100555,Lam Research
+P2155480,라이너쿼츠,Liner Quartz,Vantage Radox,ASML-LQ-2155480,ASML
+P2100452,Window Quartz,Window Quartz for Vantage Radox,Vantage Radox,TEL-WQ-2100452,TEL
+P2200000,Shower Head 006,Shower Head for Etch Module,Etch Module,LAM-SHO-0006,Lam Research
+P2200001,ESC Chuck 007,ESC Chuck for Implant Module,Implant Module,ASM-ESC-0007,ASML
+P2200002,O-ring 008,O-ring for Vantage Radox,Vantage Radox,AMA-OR-0008,AMAT
+P2200003,Bellows 009,Bellows for Endura,Endura,TEL-BEL-0009,TEL
+P2200004,RF Match 010,RF Match for Etch Module,Etch Module,LAM-RF -0010,Lam Research
+P2200005,Gas Line Filter 011,Gas Line Filter for Implant Module,Implant Module,ASM-GAS-0011,ASML
+P2200006,Quartz Tube 012,Quartz Tube for Vantage Radox,Vantage Radox,AMA-QUA-0012,AMAT
+P2200007,Edge Ring 013,Edge Ring for Endura,Endura,TEL-EDG-0013,TEL
+P2200008,Clamp Ring 014,Clamp Ring for Etch Module,Etch Module,LAM-CLA-0014,Lam Research
+P2200009,Slit Valve 015,Slit Valve for Implant Module,Implant Module,ASM-SLI-0015,ASML
+P2200010,Gate Valve 016,Gate Valve for Vantage Radox,Vantage Radox,AMA-GAT-0016,AMAT
+P2200011,Heater Block 017,Heater Block for Endura,Endura,TEL-HEA-0017,TEL
+P2200012,Susceptor 018,Susceptor for Etch Module,Etch Module,LAM-SUS-0018,Lam Research
+P2200013,Robot Blade 019,Robot Blade for Implant Module,Implant Module,ASM-ROB-0019,ASML
+P2200014,Vacuum Gauge 020,Vacuum Gauge for Vantage Radox,Vantage Radox,AMA-VAC-0020,AMAT
+P2200015,MFC 021,MFC for Endura,Endura,TEL-MFC-0021,TEL
+P2200016,Turbo Pump 022,Turbo Pump for Etch Module,Etch Module,LAM-TUR-0022,Lam Research
+P2200017,Dry Pump 023,Dry Pump for Implant Module,Implant Module,ASM-DRY-0023,ASML
+P2200018,Cooling Plate 024,Cooling Plate for Vantage Radox,Vantage Radox,AMA-COO-0024,AMAT
+P2200019,Ceramic Plate 025,Ceramic Plate for Endura,Endura,TEL-CER-0025,TEL
+P2200020,Ion Source 026,Ion Source for Etch Module,Etch Module,LAM-ION-0026,Lam Research
+P2200021,Chamber Wall 027,Chamber Wall for Implant Module,Implant Module,ASM-CHA-0027,ASML
+P2200022,Nozzle 028,Nozzle for Vantage Radox,Vantage Radox,AMA-NOZ-0028,AMAT
+P2200023,Diffuser 029,Diffuser for Endura,Endura,TEL-DIF-0029,TEL
+P2200024,Window Quartz 030,Window Quartz for Etch Module,Etch Module,LAM-WIN-0030,Lam Research
+P2200025,Liner Quartz 031,Liner Quartz for Implant Module,Implant Module,ASM-LIN-0031,ASML
+P2200026,PM Kit 032,PM Kit for Vantage Radox,Vantage Radox,AMA-PM -0032,AMAT
+P2200027,Throttle Valve 033,Throttle Valve for Endura,Endura,TEL-THR-0033,TEL
+P2200028,Ceramic Ring 034,Ceramic Ring for Etch Module,Etch Module,LAM-CER-0034,Lam Research
+P2200029,Focus Ring 035,Focus Ring for Implant Module,Implant Module,ASM-FOC-0035,ASML
+P2200030,Shower Head 036,Shower Head for Vantage Radox,Vantage Radox,AMA-SHO-0036,AMAT
+P2200031,ESC Chuck 037,ESC Chuck for Endura,Endura,TEL-ESC-0037,TEL
+P2200032,O-ring 038,O-ring for Etch Module,Etch Module,LAM-OR-0038,Lam Research
+P2200033,Bellows 039,Bellows for Implant Module,Implant Module,ASM-BEL-0039,ASML
+P2200034,RF Match 040,RF Match for Vantage Radox,Vantage Radox,AMA-RF -0040,AMAT
+P2200035,Gas Line Filter 041,Gas Line Filter for Endura,Endura,TEL-GAS-0041,TEL
+P2200036,Quartz Tube 042,Quartz Tube for Etch Module,Etch Module,LAM-QUA-0042,Lam Research
+P2200037,Edge Ring 043,Edge Ring for Implant Module,Implant Module,ASM-EDG-0043,ASML
+P2200038,Clamp Ring 044,Clamp Ring for Vantage Radox,Vantage Radox,AMA-CLA-0044,AMAT
+P2200039,Slit Valve 045,Slit Valve for Endura,Endura,TEL-SLI-0045,TEL
+P2200040,Gate Valve 046,Gate Valve for Etch Module,Etch Module,LAM-GAT-0046,Lam Research
+P2200041,Heater Block 047,Heater Block for Implant Module,Implant Module,ASM-HEA-0047,ASML
+P2200042,Susceptor 048,Susceptor for Vantage Radox,Vantage Radox,AMA-SUS-0048,AMAT
+P2200043,Robot Blade 049,Robot Blade for Endura,Endura,TEL-ROB-0049,TEL
+P2200044,Vacuum Gauge 050,Vacuum Gauge for Etch Module,Etch Module,LAM-VAC-0050,Lam Research
+P2200045,MFC 051,MFC for Implant Module,Implant Module,ASM-MFC-0051,ASML
+P2200046,Turbo Pump 052,Turbo Pump for Vantage Radox,Vantage Radox,AMA-TUR-0052,AMAT
+P2200047,Dry Pump 053,Dry Pump for Endura,Endura,TEL-DRY-0053,TEL
+P2200048,Cooling Plate 054,Cooling Plate for Etch Module,Etch Module,LAM-COO-0054,Lam Research
+P2200049,Ceramic Plate 055,Ceramic Plate for Implant Module,Implant Module,ASM-CER-0055,ASML
+P2200050,Ion Source 056,Ion Source for Vantage Radox,Vantage Radox,AMA-ION-0056,AMAT
+P2200051,Chamber Wall 057,Chamber Wall for Endura,Endura,TEL-CHA-0057,TEL
+P2200052,Nozzle 058,Nozzle for Etch Module,Etch Module,LAM-NOZ-0058,Lam Research
+P2200053,Diffuser 059,Diffuser for Implant Module,Implant Module,ASM-DIF-0059,ASML
+P2200054,Window Quartz 060,Window Quartz for Vantage Radox,Vantage Radox,AMA-WIN-0060,AMAT
+P2200055,Liner Quartz 061,Liner Quartz for Endura,Endura,TEL-LIN-0061,TEL
+P2200056,PM Kit 062,PM Kit for Etch Module,Etch Module,LAM-PM -0062,Lam Research
+P2200057,Throttle Valve 063,Throttle Valve for Implant Module,Implant Module,ASM-THR-0063,ASML
+P2200058,Ceramic Ring 064,Ceramic Ring for Vantage Radox,Vantage Radox,AMA-CER-0064,AMAT
+P2200059,Focus Ring 065,Focus Ring for Endura,Endura,TEL-FOC-0065,TEL
+P2200060,Shower Head 066,Shower Head for Etch Module,Etch Module,LAM-SHO-0066,Lam Research
+P2200061,ESC Chuck 067,ESC Chuck for Implant Module,Implant Module,ASM-ESC-0067,ASML
+P2200062,O-ring 068,O-ring for Vantage Radox,Vantage Radox,AMA-OR-0068,AMAT
+P2200063,Bellows 069,Bellows for Endura,Endura,TEL-BEL-0069,TEL
+P2200064,RF Match 070,RF Match for Etch Module,Etch Module,LAM-RF -0070,Lam Research
+P2200065,Gas Line Filter 071,Gas Line Filter for Implant Module,Implant Module,ASM-GAS-0071,ASML
+P2200066,Quartz Tube 072,Quartz Tube for Vantage Radox,Vantage Radox,AMA-QUA-0072,AMAT
+P2200067,Edge Ring 073,Edge Ring for Endura,Endura,TEL-EDG-0073,TEL
+P2200068,Clamp Ring 074,Clamp Ring for Etch Module,Etch Module,LAM-CLA-0074,Lam Research
+P2200069,Slit Valve 075,Slit Valve for Implant Module,Implant Module,ASM-SLI-0075,ASML
+P2200070,Gate Valve 076,Gate Valve for Vantage Radox,Vantage Radox,AMA-GAT-0076,AMAT
+P2200071,Heater Block 077,Heater Block for Endura,Endura,TEL-HEA-0077,TEL
+P2200072,Susceptor 078,Susceptor for Etch Module,Etch Module,LAM-SUS-0078,Lam Research
+P2200073,Robot Blade 079,Robot Blade for Implant Module,Implant Module,ASM-ROB-0079,ASML
+P2200074,Vacuum Gauge 080,Vacuum Gauge for Vantage Radox,Vantage Radox,AMA-VAC-0080,AMAT
+P2200075,MFC 081,MFC for Endura,Endura,TEL-MFC-0081,TEL
+P2200076,Turbo Pump 082,Turbo Pump for Etch Module,Etch Module,LAM-TUR-0082,Lam Research
+P2200077,Dry Pump 083,Dry Pump for Implant Module,Implant Module,ASM-DRY-0083,ASML
+P2200078,Cooling Plate 084,Cooling Plate for Vantage Radox,Vantage Radox,AMA-COO-0084,AMAT
+P2200079,Ceramic Plate 085,Ceramic Plate for Endura,Endura,TEL-CER-0085,TEL
+P2200080,Ion Source 086,Ion Source for Etch Module,Etch Module,LAM-ION-0086,Lam Research
+P2200081,Chamber Wall 087,Chamber Wall for Implant Module,Implant Module,ASM-CHA-0087,ASML
+P2200082,Nozzle 088,Nozzle for Vantage Radox,Vantage Radox,AMA-NOZ-0088,AMAT
+P2200083,Diffuser 089,Diffuser for Endura,Endura,TEL-DIF-0089,TEL
+P2200084,Window Quartz 090,Window Quartz for Etch Module,Etch Module,LAM-WIN-0090,Lam Research
+P2200085,Liner Quartz 091,Liner Quartz for Implant Module,Implant Module,ASM-LIN-0091,ASML
+P2200086,PM Kit 092,PM Kit for Vantage Radox,Vantage Radox,AMA-PM -0092,AMAT
+P2200087,Throttle Valve 093,Throttle Valve for Endura,Endura,TEL-THR-0093,TEL
+P2200088,Ceramic Ring 094,Ceramic Ring for Etch Module,Etch Module,LAM-CER-0094,Lam Research
+P2200089,Focus Ring 095,Focus Ring for Implant Module,Implant Module,ASM-FOC-0095,ASML
+P2200090,Shower Head 096,Shower Head for Vantage Radox,Vantage Radox,AMA-SHO-0096,AMAT
+P2200091,ESC Chuck 097,ESC Chuck for Endura,Endura,TEL-ESC-0097,TEL
+P2200092,O-ring 098,O-ring for Etch Module,Etch Module,LAM-OR-0098,Lam Research
+P2200093,Bellows 099,Bellows for Implant Module,Implant Module,ASM-BEL-0099,ASML
+P2200094,RF Match 100,RF Match for Vantage Radox,Vantage Radox,AMA-RF -0100,AMAT
+P2200095,Gas Line Filter 101,Gas Line Filter for Endura,Endura,TEL-GAS-0101,TEL
+P2200096,Quartz Tube 102,Quartz Tube for Etch Module,Etch Module,LAM-QUA-0102,Lam Research
+P2200097,Edge Ring 103,Edge Ring for Implant Module,Implant Module,ASM-EDG-0103,ASML
+P2200098,Clamp Ring 104,Clamp Ring for Vantage Radox,Vantage Radox,AMA-CLA-0104,AMAT
+P2200099,Slit Valve 105,Slit Valve for Endura,Endura,TEL-SLI-0105,TEL
+P2200100,Gate Valve 106,Gate Valve for Etch Module,Etch Module,LAM-GAT-0106,Lam Research
+P2200101,Heater Block 107,Heater Block for Implant Module,Implant Module,ASM-HEA-0107,ASML
+P2200102,Susceptor 108,Susceptor for Vantage Radox,Vantage Radox,AMA-SUS-0108,AMAT
+P2200103,Robot Blade 109,Robot Blade for Endura,Endura,TEL-ROB-0109,TEL
+P2200104,Vacuum Gauge 110,Vacuum Gauge for Etch Module,Etch Module,LAM-VAC-0110,Lam Research
+P2200105,MFC 111,MFC for Implant Module,Implant Module,ASM-MFC-0111,ASML
+P2200106,Turbo Pump 112,Turbo Pump for Vantage Radox,Vantage Radox,AMA-TUR-0112,AMAT
+P2200107,Dry Pump 113,Dry Pump for Endura,Endura,TEL-DRY-0113,TEL
+P2200108,Cooling Plate 114,Cooling Plate for Etch Module,Etch Module,LAM-COO-0114,Lam Research
+P2200109,Ceramic Plate 115,Ceramic Plate for Implant Module,Implant Module,ASM-CER-0115,ASML
+P2200110,Ion Source 116,Ion Source for Vantage Radox,Vantage Radox,AMA-ION-0116,AMAT
+P2200111,Chamber Wall 117,Chamber Wall for Endura,Endura,TEL-CHA-0117,TEL
+P2200112,Nozzle 118,Nozzle for Etch Module,Etch Module,LAM-NOZ-0118,Lam Research
+P2200113,Diffuser 119,Diffuser for Implant Module,Implant Module,ASM-DIF-0119,ASML
+P2200114,Window Quartz 120,Window Quartz for Vantage Radox,Vantage Radox,AMA-WIN-0120,AMAT
+P2200115,Liner Quartz 121,Liner Quartz for Endura,Endura,TEL-LIN-0121,TEL
+P2200116,PM Kit 122,PM Kit for Etch Module,Etch Module,LAM-PM -0122,Lam Research
+P2200117,Throttle Valve 123,Throttle Valve for Implant Module,Implant Module,ASM-THR-0123,ASML
+P2200118,Ceramic Ring 124,Ceramic Ring for Vantage Radox,Vantage Radox,AMA-CER-0124,AMAT
+P2200119,Focus Ring 125,Focus Ring for Endura,Endura,TEL-FOC-0125,TEL
+P2200120,Shower Head 126,Shower Head for Etch Module,Etch Module,LAM-SHO-0126,Lam Research
+P2200121,ESC Chuck 127,ESC Chuck for Implant Module,Implant Module,ASM-ESC-0127,ASML
+P2200122,O-ring 128,O-ring for Vantage Radox,Vantage Radox,AMA-OR-0128,AMAT
+P2200123,Bellows 129,Bellows for Endura,Endura,TEL-BEL-0129,TEL
+P2200124,RF Match 130,RF Match for Etch Module,Etch Module,LAM-RF -0130,Lam Research
+P2200125,Gas Line Filter 131,Gas Line Filter for Implant Module,Implant Module,ASM-GAS-0131,ASML
+P2200126,Quartz Tube 132,Quartz Tube for Vantage Radox,Vantage Radox,AMA-QUA-0132,AMAT
+P2200127,Edge Ring 133,Edge Ring for Endura,Endura,TEL-EDG-0133,TEL
+P2200128,Clamp Ring 134,Clamp Ring for Etch Module,Etch Module,LAM-CLA-0134,Lam Research
+P2200129,Slit Valve 135,Slit Valve for Implant Module,Implant Module,ASM-SLI-0135,ASML
+P2200130,Gate Valve 136,Gate Valve for Vantage Radox,Vantage Radox,AMA-GAT-0136,AMAT
+P2200131,Heater Block 137,Heater Block for Endura,Endura,TEL-HEA-0137,TEL
+P2200132,Susceptor 138,Susceptor for Etch Module,Etch Module,LAM-SUS-0138,Lam Research
+P2200133,Robot Blade 139,Robot Blade for Implant Module,Implant Module,ASM-ROB-0139,ASML
+P2200134,Vacuum Gauge 140,Vacuum Gauge for Vantage Radox,Vantage Radox,AMA-VAC-0140,AMAT
+P2200135,MFC 141,MFC for Endura,Endura,TEL-MFC-0141,TEL
+P2200136,Turbo Pump 142,Turbo Pump for Etch Module,Etch Module,LAM-TUR-0142,Lam Research
+P2200137,Dry Pump 143,Dry Pump for Implant Module,Implant Module,ASM-DRY-0143,ASML
+P2200138,Cooling Plate 144,Cooling Plate for Vantage Radox,Vantage Radox,AMA-COO-0144,AMAT
+P2200139,Ceramic Plate 145,Ceramic Plate for Endura,Endura,TEL-CER-0145,TEL
+P2200140,Ion Source 146,Ion Source for Etch Module,Etch Module,LAM-ION-0146,Lam Research
+P2200141,Chamber Wall 147,Chamber Wall for Implant Module,Implant Module,ASM-CHA-0147,ASML
+P2200142,Nozzle 148,Nozzle for Vantage Radox,Vantage Radox,AMA-NOZ-0148,AMAT
+P2200143,Diffuser 149,Diffuser for Endura,Endura,TEL-DIF-0149,TEL
+P2200144,Window Quartz 150,Window Quartz for Etch Module,Etch Module,LAM-WIN-0150,Lam Research
+P2200145,Liner Quartz 151,Liner Quartz for Implant Module,Implant Module,ASM-LIN-0151,ASML
+P2200146,PM Kit 152,PM Kit for Vantage Radox,Vantage Radox,AMA-PM -0152,AMAT
+P2200147,Throttle Valve 153,Throttle Valve for Endura,Endura,TEL-THR-0153,TEL
+P2200148,Ceramic Ring 154,Ceramic Ring for Etch Module,Etch Module,LAM-CER-0154,Lam Research
+P2200149,Focus Ring 155,Focus Ring for Implant Module,Implant Module,ASM-FOC-0155,ASML
+P2200150,Shower Head 156,Shower Head for Vantage Radox,Vantage Radox,AMA-SHO-0156,AMAT
+P2200151,ESC Chuck 157,ESC Chuck for Endura,Endura,TEL-ESC-0157,TEL
+P2200152,O-ring 158,O-ring for Etch Module,Etch Module,LAM-OR-0158,Lam Research
+P2200153,Bellows 159,Bellows for Implant Module,Implant Module,ASM-BEL-0159,ASML
+P2200154,RF Match 160,RF Match for Vantage Radox,Vantage Radox,AMA-RF -0160,AMAT
+P2200155,Gas Line Filter 161,Gas Line Filter for Endura,Endura,TEL-GAS-0161,TEL
+P2200156,Quartz Tube 162,Quartz Tube for Etch Module,Etch Module,LAM-QUA-0162,Lam Research
+P2200157,Edge Ring 163,Edge Ring for Implant Module,Implant Module,ASM-EDG-0163,ASML
+P2200158,Clamp Ring 164,Clamp Ring for Vantage Radox,Vantage Radox,AMA-CLA-0164,AMAT
+P2200159,Slit Valve 165,Slit Valve for Endura,Endura,TEL-SLI-0165,TEL
+P2200160,Gate Valve 166,Gate Valve for Etch Module,Etch Module,LAM-GAT-0166,Lam Research
+P2200161,Heater Block 167,Heater Block for Implant Module,Implant Module,ASM-HEA-0167,ASML
+P2200162,Susceptor 168,Susceptor for Vantage Radox,Vantage Radox,AMA-SUS-0168,AMAT
+P2200163,Robot Blade 169,Robot Blade for Endura,Endura,TEL-ROB-0169,TEL
+P2200164,Vacuum Gauge 170,Vacuum Gauge for Etch Module,Etch Module,LAM-VAC-0170,Lam Research
+P2200165,MFC 171,MFC for Implant Module,Implant Module,ASM-MFC-0171,ASML
+P2200166,Turbo Pump 172,Turbo Pump for Vantage Radox,Vantage Radox,AMA-TUR-0172,AMAT
+P2200167,Dry Pump 173,Dry Pump for Endura,Endura,TEL-DRY-0173,TEL
+P2200168,Cooling Plate 174,Cooling Plate for Etch Module,Etch Module,LAM-COO-0174,Lam Research
+P2200169,Ceramic Plate 175,Ceramic Plate for Implant Module,Implant Module,ASM-CER-0175,ASML
+P2200170,Ion Source 176,Ion Source for Vantage Radox,Vantage Radox,AMA-ION-0176,AMAT
+P2200171,Chamber Wall 177,Chamber Wall for Endura,Endura,TEL-CHA-0177,TEL
+P2200172,Nozzle 178,Nozzle for Etch Module,Etch Module,LAM-NOZ-0178,Lam Research
+P2200173,Diffuser 179,Diffuser for Implant Module,Implant Module,ASM-DIF-0179,ASML
+P2200174,Window Quartz 180,Window Quartz for Vantage Radox,Vantage Radox,AMA-WIN-0180,AMAT
+P2200175,Liner Quartz 181,Liner Quartz for Endura,Endura,TEL-LIN-0181,TEL
+P2200176,PM Kit 182,PM Kit for Etch Module,Etch Module,LAM-PM -0182,Lam Research
+P2200177,Throttle Valve 183,Throttle Valve for Implant Module,Implant Module,ASM-THR-0183,ASML
+P2200178,Ceramic Ring 184,Ceramic Ring for Vantage Radox,Vantage Radox,AMA-CER-0184,AMAT
+P2200179,Focus Ring 185,Focus Ring for Endura,Endura,TEL-FOC-0185,TEL
+P2200180,Shower Head 186,Shower Head for Etch Module,Etch Module,LAM-SHO-0186,Lam Research
+P2200181,ESC Chuck 187,ESC Chuck for Implant Module,Implant Module,ASM-ESC-0187,ASML
+P2200182,O-ring 188,O-ring for Vantage Radox,Vantage Radox,AMA-OR-0188,AMAT
+P2200183,Bellows 189,Bellows for Endura,Endura,TEL-BEL-0189,TEL
+P2200184,RF Match 190,RF Match for Etch Module,Etch Module,LAM-RF -0190,Lam Research
+P2200185,Gas Line Filter 191,Gas Line Filter for Implant Module,Implant Module,ASM-GAS-0191,ASML
+P2200186,Quartz Tube 192,Quartz Tube for Vantage Radox,Vantage Radox,AMA-QUA-0192,AMAT
+P2200187,Edge Ring 193,Edge Ring for Endura,Endura,TEL-EDG-0193,TEL
+P2200188,Clamp Ring 194,Clamp Ring for Etch Module,Etch Module,LAM-CLA-0194,Lam Research
+P2200189,Slit Valve 195,Slit Valve for Implant Module,Implant Module,ASM-SLI-0195,ASML
+P2200190,Gate Valve 196,Gate Valve for Vantage Radox,Vantage Radox,AMA-GAT-0196,AMAT
+P2200191,Heater Block 197,Heater Block for Endura,Endura,TEL-HEA-0197,TEL
+P2200192,Susceptor 198,Susceptor for Etch Module,Etch Module,LAM-SUS-0198,Lam Research
+P2200193,Robot Blade 199,Robot Blade for Implant Module,Implant Module,ASM-ROB-0199,ASML
+P2200194,Vacuum Gauge 200,Vacuum Gauge for Vantage Radox,Vantage Radox,AMA-VAC-0200,AMAT
+P2200195,MFC 201,MFC for Endura,Endura,TEL-MFC-0201,TEL
+P2200196,Turbo Pump 202,Turbo Pump for Etch Module,Etch Module,LAM-TUR-0202,Lam Research
+P2200197,Dry Pump 203,Dry Pump for Implant Module,Implant Module,ASM-DRY-0203,ASML
+P2200198,Cooling Plate 204,Cooling Plate for Vantage Radox,Vantage Radox,AMA-COO-0204,AMAT
+P2200199,Ceramic Plate 205,Ceramic Plate for Endura,Endura,TEL-CER-0205,TEL
+P2200200,Ion Source 206,Ion Source for Etch Module,Etch Module,LAM-ION-0206,Lam Research
+P2200201,Chamber Wall 207,Chamber Wall for Implant Module,Implant Module,ASM-CHA-0207,ASML
+P2200202,Nozzle 208,Nozzle for Vantage Radox,Vantage Radox,AMA-NOZ-0208,AMAT
+P2200203,Diffuser 209,Diffuser for Endura,Endura,TEL-DIF-0209,TEL
+P2200204,Window Quartz 210,Window Quartz for Etch Module,Etch Module,LAM-WIN-0210,Lam Research
+P2200205,Liner Quartz 211,Liner Quartz for Implant Module,Implant Module,ASM-LIN-0211,ASML
+P2200206,PM Kit 212,PM Kit for Vantage Radox,Vantage Radox,AMA-PM -0212,AMAT
+P2200207,Throttle Valve 213,Throttle Valve for Endura,Endura,TEL-THR-0213,TEL
+P2200208,Ceramic Ring 214,Ceramic Ring for Etch Module,Etch Module,LAM-CER-0214,Lam Research
+P2200209,Focus Ring 215,Focus Ring for Implant Module,Implant Module,ASM-FOC-0215,ASML
+P2200210,Shower Head 216,Shower Head for Vantage Radox,Vantage Radox,AMA-SHO-0216,AMAT
+P2200211,ESC Chuck 217,ESC Chuck for Endura,Endura,TEL-ESC-0217,TEL
+P2200212,O-ring 218,O-ring for Etch Module,Etch Module,LAM-OR-0218,Lam Research
+P2200213,Bellows 219,Bellows for Implant Module,Implant Module,ASM-BEL-0219,ASML
+P2200214,RF Match 220,RF Match for Vantage Radox,Vantage Radox,AMA-RF -0220,AMAT
+P2200215,Gas Line Filter 221,Gas Line Filter for Endura,Endura,TEL-GAS-0221,TEL
+P2200216,Quartz Tube 222,Quartz Tube for Etch Module,Etch Module,LAM-QUA-0222,Lam Research
+P2200217,Edge Ring 223,Edge Ring for Implant Module,Implant Module,ASM-EDG-0223,ASML
+P2200218,Clamp Ring 224,Clamp Ring for Vantage Radox,Vantage Radox,AMA-CLA-0224,AMAT
+P2200219,Slit Valve 225,Slit Valve for Endura,Endura,TEL-SLI-0225,TEL
+P2200220,Gate Valve 226,Gate Valve for Etch Module,Etch Module,LAM-GAT-0226,Lam Research
+P2200221,Heater Block 227,Heater Block for Implant Module,Implant Module,ASM-HEA-0227,ASML
+P2200222,Susceptor 228,Susceptor for Vantage Radox,Vantage Radox,AMA-SUS-0228,AMAT
+P2200223,Robot Blade 229,Robot Blade for Endura,Endura,TEL-ROB-0229,TEL
+P2200224,Vacuum Gauge 230,Vacuum Gauge for Etch Module,Etch Module,LAM-VAC-0230,Lam Research
+P2200225,MFC 231,MFC for Implant Module,Implant Module,ASM-MFC-0231,ASML
+P2200226,Turbo Pump 232,Turbo Pump for Vantage Radox,Vantage Radox,AMA-TUR-0232,AMAT
+P2200227,Dry Pump 233,Dry Pump for Endura,Endura,TEL-DRY-0233,TEL
+P2200228,Cooling Plate 234,Cooling Plate for Etch Module,Etch Module,LAM-COO-0234,Lam Research
+P2200229,Ceramic Plate 235,Ceramic Plate for Implant Module,Implant Module,ASM-CER-0235,ASML
+P2200230,Ion Source 236,Ion Source for Vantage Radox,Vantage Radox,AMA-ION-0236,AMAT
+P2200231,Chamber Wall 237,Chamber Wall for Endura,Endura,TEL-CHA-0237,TEL
+P2200232,Nozzle 238,Nozzle for Etch Module,Etch Module,LAM-NOZ-0238,Lam Research
+P2200233,Diffuser 239,Diffuser for Implant Module,Implant Module,ASM-DIF-0239,ASML
+P2200234,Window Quartz 240,Window Quartz for Vantage Radox,Vantage Radox,AMA-WIN-0240,AMAT
+P2200235,Liner Quartz 241,Liner Quartz for Endura,Endura,TEL-LIN-0241,TEL
+P2200236,PM Kit 242,PM Kit for Etch Module,Etch Module,LAM-PM -0242,Lam Research
+P2200237,Throttle Valve 243,Throttle Valve for Implant Module,Implant Module,ASM-THR-0243,ASML
+P2200238,Ceramic Ring 244,Ceramic Ring for Vantage Radox,Vantage Radox,AMA-CER-0244,AMAT
+P2200239,Focus Ring 245,Focus Ring for Endura,Endura,TEL-FOC-0245,TEL
+P2200240,Shower Head 246,Shower Head for Etch Module,Etch Module,LAM-SHO-0246,Lam Research
+P2200241,ESC Chuck 247,ESC Chuck for Implant Module,Implant Module,ASM-ESC-0247,ASML
+P2200242,O-ring 248,O-ring for Vantage Radox,Vantage Radox,AMA-OR-0248,AMAT
+P2200243,Bellows 249,Bellows for Endura,Endura,TEL-BEL-0249,TEL
+P2200244,RF Match 250,RF Match for Etch Module,Etch Module,LAM-RF -0250,Lam Research
+P2200245,Gas Line Filter 251,Gas Line Filter for Implant Module,Implant Module,ASM-GAS-0251,ASML
+P2200246,Quartz Tube 252,Quartz Tube for Vantage Radox,Vantage Radox,AMA-QUA-0252,AMAT
+P2200247,Edge Ring 253,Edge Ring for Endura,Endura,TEL-EDG-0253,TEL
+P2200248,Clamp Ring 254,Clamp Ring for Etch Module,Etch Module,LAM-CLA-0254,Lam Research
+P2200249,Slit Valve 255,Slit Valve for Implant Module,Implant Module,ASM-SLI-0255,ASML
+P2200250,Gate Valve 256,Gate Valve for Vantage Radox,Vantage Radox,AMA-GAT-0256,AMAT
+P2200251,Heater Block 257,Heater Block for Endura,Endura,TEL-HEA-0257,TEL
+P2200252,Susceptor 258,Susceptor for Etch Module,Etch Module,LAM-SUS-0258,Lam Research
+P2200253,Robot Blade 259,Robot Blade for Implant Module,Implant Module,ASM-ROB-0259,ASML
+P2200254,Vacuum Gauge 260,Vacuum Gauge for Vantage Radox,Vantage Radox,AMA-VAC-0260,AMAT
+P2200255,MFC 261,MFC for Endura,Endura,TEL-MFC-0261,TEL
+P2200256,Turbo Pump 262,Turbo Pump for Etch Module,Etch Module,LAM-TUR-0262,Lam Research
+P2200257,Dry Pump 263,Dry Pump for Implant Module,Implant Module,ASM-DRY-0263,ASML
+P2200258,Cooling Plate 264,Cooling Plate for Vantage Radox,Vantage Radox,AMA-COO-0264,AMAT
+P2200259,Ceramic Plate 265,Ceramic Plate for Endura,Endura,TEL-CER-0265,TEL
+P2200260,Ion Source 266,Ion Source for Etch Module,Etch Module,LAM-ION-0266,Lam Research
+P2200261,Chamber Wall 267,Chamber Wall for Implant Module,Implant Module,ASM-CHA-0267,ASML
+P2200262,Nozzle 268,Nozzle for Vantage Radox,Vantage Radox,AMA-NOZ-0268,AMAT
+P2200263,Diffuser 269,Diffuser for Endura,Endura,TEL-DIF-0269,TEL
+P2200264,Window Quartz 270,Window Quartz for Etch Module,Etch Module,LAM-WIN-0270,Lam Research
+P2200265,Liner Quartz 271,Liner Quartz for Implant Module,Implant Module,ASM-LIN-0271,ASML
+P2200266,PM Kit 272,PM Kit for Vantage Radox,Vantage Radox,AMA-PM -0272,AMAT
+P2200267,Throttle Valve 273,Throttle Valve for Endura,Endura,TEL-THR-0273,TEL
+P2200268,Ceramic Ring 274,Ceramic Ring for Etch Module,Etch Module,LAM-CER-0274,Lam Research
+P2200269,Focus Ring 275,Focus Ring for Implant Module,Implant Module,ASM-FOC-0275,ASML
+P2200270,Shower Head 276,Shower Head for Vantage Radox,Vantage Radox,AMA-SHO-0276,AMAT
+P2200271,ESC Chuck 277,ESC Chuck for Endura,Endura,TEL-ESC-0277,TEL
+P2200272,O-ring 278,O-ring for Etch Module,Etch Module,LAM-OR-0278,Lam Research
+P2200273,Bellows 279,Bellows for Implant Module,Implant Module,ASM-BEL-0279,ASML
+P2200274,RF Match 280,RF Match for Vantage Radox,Vantage Radox,AMA-RF -0280,AMAT
+P2200275,Gas Line Filter 281,Gas Line Filter for Endura,Endura,TEL-GAS-0281,TEL
+P2200276,Quartz Tube 282,Quartz Tube for Etch Module,Etch Module,LAM-QUA-0282,Lam Research
+P2200277,Edge Ring 283,Edge Ring for Implant Module,Implant Module,ASM-EDG-0283,ASML
+P2200278,Clamp Ring 284,Clamp Ring for Vantage Radox,Vantage Radox,AMA-CLA-0284,AMAT
+P2200279,Slit Valve 285,Slit Valve for Endura,Endura,TEL-SLI-0285,TEL
+P2200280,Gate Valve 286,Gate Valve for Etch Module,Etch Module,LAM-GAT-0286,Lam Research
+P2200281,Heater Block 287,Heater Block for Implant Module,Implant Module,ASM-HEA-0287,ASML
+P2200282,Susceptor 288,Susceptor for Vantage Radox,Vantage Radox,AMA-SUS-0288,AMAT
+P2200283,Robot Blade 289,Robot Blade for Endura,Endura,TEL-ROB-0289,TEL
+P2200284,Vacuum Gauge 290,Vacuum Gauge for Etch Module,Etch Module,LAM-VAC-0290,Lam Research
+P2200285,MFC 291,MFC for Implant Module,Implant Module,ASM-MFC-0291,ASML
+P2200286,Turbo Pump 292,Turbo Pump for Vantage Radox,Vantage Radox,AMA-TUR-0292,AMAT
+P2200287,Dry Pump 293,Dry Pump for Endura,Endura,TEL-DRY-0293,TEL
+P2200288,Cooling Plate 294,Cooling Plate for Etch Module,Etch Module,LAM-COO-0294,Lam Research
+P2200289,Ceramic Plate 295,Ceramic Plate for Implant Module,Implant Module,ASM-CER-0295,ASML
+P2200290,Ion Source 296,Ion Source for Vantage Radox,Vantage Radox,AMA-ION-0296,AMAT
+P2200291,Chamber Wall 297,Chamber Wall for Endura,Endura,TEL-CHA-0297,TEL
+P2200292,Nozzle 298,Nozzle for Etch Module,Etch Module,LAM-NOZ-0298,Lam Research
+P2200293,Diffuser 299,Diffuser for Implant Module,Implant Module,ASM-DIF-0299,ASML
+P2200294,Window Quartz 300,Window Quartz for Vantage Radox,Vantage Radox,AMA-WIN-0300,AMAT
+P2200295,Liner Quartz 301,Liner Quartz for Endura,Endura,TEL-LIN-0301,TEL
+P2200296,PM Kit 302,PM Kit for Etch Module,Etch Module,LAM-PM -0302,Lam Research
+P2200297,Throttle Valve 303,Throttle Valve for Implant Module,Implant Module,ASM-THR-0303,ASML
+P2200298,Ceramic Ring 304,Ceramic Ring for Vantage Radox,Vantage Radox,AMA-CER-0304,AMAT
+P2200299,Focus Ring 305,Focus Ring for Endura,Endura,TEL-FOC-0305,TEL
+P2200300,Shower Head 306,Shower Head for Etch Module,Etch Module,LAM-SHO-0306,Lam Research
+P2200301,ESC Chuck 307,ESC Chuck for Implant Module,Implant Module,ASM-ESC-0307,ASML
+P2200302,O-ring 308,O-ring for Vantage Radox,Vantage Radox,AMA-OR-0308,AMAT
+P2200303,Bellows 309,Bellows for Endura,Endura,TEL-BEL-0309,TEL
+P2200304,RF Match 310,RF Match for Etch Module,Etch Module,LAM-RF -0310,Lam Research
+P2200305,Gas Line Filter 311,Gas Line Filter for Implant Module,Implant Module,ASM-GAS-0311,ASML
+P2200306,Quartz Tube 312,Quartz Tube for Vantage Radox,Vantage Radox,AMA-QUA-0312,AMAT
+P2200307,Edge Ring 313,Edge Ring for Endura,Endura,TEL-EDG-0313,TEL
+P2200308,Clamp Ring 314,Clamp Ring for Etch Module,Etch Module,LAM-CLA-0314,Lam Research
+P2200309,Slit Valve 315,Slit Valve for Implant Module,Implant Module,ASM-SLI-0315,ASML
+P2200310,Gate Valve 316,Gate Valve for Vantage Radox,Vantage Radox,AMA-GAT-0316,AMAT
+P2200311,Heater Block 317,Heater Block for Endura,Endura,TEL-HEA-0317,TEL
+P2200312,Susceptor 318,Susceptor for Etch Module,Etch Module,LAM-SUS-0318,Lam Research
+P2200313,Robot Blade 319,Robot Blade for Implant Module,Implant Module,ASM-ROB-0319,ASML
+P2200314,Vacuum Gauge 320,Vacuum Gauge for Vantage Radox,Vantage Radox,AMA-VAC-0320,AMAT
+P2200315,MFC 321,MFC for Endura,Endura,TEL-MFC-0321,TEL
+P2200316,Turbo Pump 322,Turbo Pump for Etch Module,Etch Module,LAM-TUR-0322,Lam Research
+P2200317,Dry Pump 323,Dry Pump for Implant Module,Implant Module,ASM-DRY-0323,ASML
+P2200318,Cooling Plate 324,Cooling Plate for Vantage Radox,Vantage Radox,AMA-COO-0324,AMAT
+P2200319,Ceramic Plate 325,Ceramic Plate for Endura,Endura,TEL-CER-0325,TEL
+P2200320,Ion Source 326,Ion Source for Etch Module,Etch Module,LAM-ION-0326,Lam Research
+P2200321,Chamber Wall 327,Chamber Wall for Implant Module,Implant Module,ASM-CHA-0327,ASML
+P2200322,Nozzle 328,Nozzle for Vantage Radox,Vantage Radox,AMA-NOZ-0328,AMAT
+P2200323,Diffuser 329,Diffuser for Endura,Endura,TEL-DIF-0329,TEL
+P2200324,Window Quartz 330,Window Quartz for Etch Module,Etch Module,LAM-WIN-0330,Lam Research
+P2200325,Liner Quartz 331,Liner Quartz for Implant Module,Implant Module,ASM-LIN-0331,ASML
+P2200326,PM Kit 332,PM Kit for Vantage Radox,Vantage Radox,AMA-PM -0332,AMAT
+P2200327,Throttle Valve 333,Throttle Valve for Endura,Endura,TEL-THR-0333,TEL
+P2200328,Ceramic Ring 334,Ceramic Ring for Etch Module,Etch Module,LAM-CER-0334,Lam Research
+P2200329,Focus Ring 335,Focus Ring for Implant Module,Implant Module,ASM-FOC-0335,ASML
+P2200330,Shower Head 336,Shower Head for Vantage Radox,Vantage Radox,AMA-SHO-0336,AMAT
+P2200331,ESC Chuck 337,ESC Chuck for Endura,Endura,TEL-ESC-0337,TEL
+P2200332,O-ring 338,O-ring for Etch Module,Etch Module,LAM-OR-0338,Lam Research
+P2200333,Bellows 339,Bellows for Implant Module,Implant Module,ASM-BEL-0339,ASML
+P2200334,RF Match 340,RF Match for Vantage Radox,Vantage Radox,AMA-RF -0340,AMAT
+P2200335,Gas Line Filter 341,Gas Line Filter for Endura,Endura,TEL-GAS-0341,TEL
+P2200336,Quartz Tube 342,Quartz Tube for Etch Module,Etch Module,LAM-QUA-0342,Lam Research
+P2200337,Edge Ring 343,Edge Ring for Implant Module,Implant Module,ASM-EDG-0343,ASML
+P2200338,Clamp Ring 344,Clamp Ring for Vantage Radox,Vantage Radox,AMA-CLA-0344,AMAT
+P2200339,Slit Valve 345,Slit Valve for Endura,Endura,TEL-SLI-0345,TEL
+P2200340,Gate Valve 346,Gate Valve for Etch Module,Etch Module,LAM-GAT-0346,Lam Research
+P2200341,Heater Block 347,Heater Block for Implant Module,Implant Module,ASM-HEA-0347,ASML
+P2200342,Susceptor 348,Susceptor for Vantage Radox,Vantage Radox,AMA-SUS-0348,AMAT
+P2200343,Robot Blade 349,Robot Blade for Endura,Endura,TEL-ROB-0349,TEL
+P2200344,Vacuum Gauge 350,Vacuum Gauge for Etch Module,Etch Module,LAM-VAC-0350,Lam Research
+P2200345,MFC 351,MFC for Implant Module,Implant Module,ASM-MFC-0351,ASML
+P2200346,Turbo Pump 352,Turbo Pump for Vantage Radox,Vantage Radox,AMA-TUR-0352,AMAT
+P2200347,Dry Pump 353,Dry Pump for Endura,Endura,TEL-DRY-0353,TEL
+P2200348,Cooling Plate 354,Cooling Plate for Etch Module,Etch Module,LAM-COO-0354,Lam Research
+P2200349,Ceramic Plate 355,Ceramic Plate for Implant Module,Implant Module,ASM-CER-0355,ASML
+P2200350,Ion Source 356,Ion Source for Vantage Radox,Vantage Radox,AMA-ION-0356,AMAT
+P2200351,Chamber Wall 357,Chamber Wall for Endura,Endura,TEL-CHA-0357,TEL
+P2200352,Nozzle 358,Nozzle for Etch Module,Etch Module,LAM-NOZ-0358,Lam Research
+P2200353,Diffuser 359,Diffuser for Implant Module,Implant Module,ASM-DIF-0359,ASML
+P2200354,Window Quartz 360,Window Quartz for Vantage Radox,Vantage Radox,AMA-WIN-0360,AMAT
+P2200355,Liner Quartz 361,Liner Quartz for Endura,Endura,TEL-LIN-0361,TEL
+P2200356,PM Kit 362,PM Kit for Etch Module,Etch Module,LAM-PM -0362,Lam Research
+P2200357,Throttle Valve 363,Throttle Valve for Implant Module,Implant Module,ASM-THR-0363,ASML
+P2200358,Ceramic Ring 364,Ceramic Ring for Vantage Radox,Vantage Radox,AMA-CER-0364,AMAT
+P2200359,Focus Ring 365,Focus Ring for Endura,Endura,TEL-FOC-0365,TEL
+P2200360,Shower Head 366,Shower Head for Etch Module,Etch Module,LAM-SHO-0366,Lam Research
+P2200361,ESC Chuck 367,ESC Chuck for Implant Module,Implant Module,ASM-ESC-0367,ASML
+P2200362,O-ring 368,O-ring for Vantage Radox,Vantage Radox,AMA-OR-0368,AMAT
+P2200363,Bellows 369,Bellows for Endura,Endura,TEL-BEL-0369,TEL
+P2200364,RF Match 370,RF Match for Etch Module,Etch Module,LAM-RF -0370,Lam Research
+P2200365,Gas Line Filter 371,Gas Line Filter for Implant Module,Implant Module,ASM-GAS-0371,ASML
+P2200366,Quartz Tube 372,Quartz Tube for Vantage Radox,Vantage Radox,AMA-QUA-0372,AMAT
+P2200367,Edge Ring 373,Edge Ring for Endura,Endura,TEL-EDG-0373,TEL
+P2200368,Clamp Ring 374,Clamp Ring for Etch Module,Etch Module,LAM-CLA-0374,Lam Research
+P2200369,Slit Valve 375,Slit Valve for Implant Module,Implant Module,ASM-SLI-0375,ASML
+P2200370,Gate Valve 376,Gate Valve for Vantage Radox,Vantage Radox,AMA-GAT-0376,AMAT
+P2200371,Heater Block 377,Heater Block for Endura,Endura,TEL-HEA-0377,TEL
+P2200372,Susceptor 378,Susceptor for Etch Module,Etch Module,LAM-SUS-0378,Lam Research
+P2200373,Robot Blade 379,Robot Blade for Implant Module,Implant Module,ASM-ROB-0379,ASML
+P2200374,Vacuum Gauge 380,Vacuum Gauge for Vantage Radox,Vantage Radox,AMA-VAC-0380,AMAT
+P2200375,MFC 381,MFC for Endura,Endura,TEL-MFC-0381,TEL
+P2200376,Turbo Pump 382,Turbo Pump for Etch Module,Etch Module,LAM-TUR-0382,Lam Research
+P2200377,Dry Pump 383,Dry Pump for Implant Module,Implant Module,ASM-DRY-0383,ASML
+P2200378,Cooling Plate 384,Cooling Plate for Vantage Radox,Vantage Radox,AMA-COO-0384,AMAT
+P2200379,Ceramic Plate 385,Ceramic Plate for Endura,Endura,TEL-CER-0385,TEL
+P2200380,Ion Source 386,Ion Source for Etch Module,Etch Module,LAM-ION-0386,Lam Research
+P2200381,Chamber Wall 387,Chamber Wall for Implant Module,Implant Module,ASM-CHA-0387,ASML
+P2200382,Nozzle 388,Nozzle for Vantage Radox,Vantage Radox,AMA-NOZ-0388,AMAT
+P2200383,Diffuser 389,Diffuser for Endura,Endura,TEL-DIF-0389,TEL
+P2200384,Window Quartz 390,Window Quartz for Etch Module,Etch Module,LAM-WIN-0390,Lam Research
+P2200385,Liner Quartz 391,Liner Quartz for Implant Module,Implant Module,ASM-LIN-0391,ASML
+P2200386,PM Kit 392,PM Kit for Vantage Radox,Vantage Radox,AMA-PM -0392,AMAT
+P2200387,Throttle Valve 393,Throttle Valve for Endura,Endura,TEL-THR-0393,TEL
+P2200388,Ceramic Ring 394,Ceramic Ring for Etch Module,Etch Module,LAM-CER-0394,Lam Research
+P2200389,Focus Ring 395,Focus Ring for Implant Module,Implant Module,ASM-FOC-0395,ASML
+P2200390,Shower Head 396,Shower Head for Vantage Radox,Vantage Radox,AMA-SHO-0396,AMAT
+P2200391,ESC Chuck 397,ESC Chuck for Endura,Endura,TEL-ESC-0397,TEL
+P2200392,O-ring 398,O-ring for Etch Module,Etch Module,LAM-OR-0398,Lam Research
+P2200393,Bellows 399,Bellows for Implant Module,Implant Module,ASM-BEL-0399,ASML
+P2200394,RF Match 400,RF Match for Vantage Radox,Vantage Radox,AMA-RF -0400,AMAT
+P2200395,Gas Line Filter 401,Gas Line Filter for Endura,Endura,TEL-GAS-0401,TEL
+P2200396,Quartz Tube 402,Quartz Tube for Etch Module,Etch Module,LAM-QUA-0402,Lam Research
+P2200397,Edge Ring 403,Edge Ring for Implant Module,Implant Module,ASM-EDG-0403,ASML
+P2200398,Clamp Ring 404,Clamp Ring for Vantage Radox,Vantage Radox,AMA-CLA-0404,AMAT
+P2200399,Slit Valve 405,Slit Valve for Endura,Endura,TEL-SLI-0405,TEL
+P2200400,Gate Valve 406,Gate Valve for Etch Module,Etch Module,LAM-GAT-0406,Lam Research
+P2200401,Heater Block 407,Heater Block for Implant Module,Implant Module,ASM-HEA-0407,ASML
+P2200402,Susceptor 408,Susceptor for Vantage Radox,Vantage Radox,AMA-SUS-0408,AMAT
+P2200403,Robot Blade 409,Robot Blade for Endura,Endura,TEL-ROB-0409,TEL
+P2200404,Vacuum Gauge 410,Vacuum Gauge for Etch Module,Etch Module,LAM-VAC-0410,Lam Research
+P2200405,MFC 411,MFC for Implant Module,Implant Module,ASM-MFC-0411,ASML
+P2200406,Turbo Pump 412,Turbo Pump for Vantage Radox,Vantage Radox,AMA-TUR-0412,AMAT
+P2200407,Dry Pump 413,Dry Pump for Endura,Endura,TEL-DRY-0413,TEL
+P2200408,Cooling Plate 414,Cooling Plate for Etch Module,Etch Module,LAM-COO-0414,Lam Research
+P2200409,Ceramic Plate 415,Ceramic Plate for Implant Module,Implant Module,ASM-CER-0415,ASML
+P2200410,Ion Source 416,Ion Source for Vantage Radox,Vantage Radox,AMA-ION-0416,AMAT
+P2200411,Chamber Wall 417,Chamber Wall for Endura,Endura,TEL-CHA-0417,TEL
+P2200412,Nozzle 418,Nozzle for Etch Module,Etch Module,LAM-NOZ-0418,Lam Research
+P2200413,Diffuser 419,Diffuser for Implant Module,Implant Module,ASM-DIF-0419,ASML
+P2200414,Window Quartz 420,Window Quartz for Vantage Radox,Vantage Radox,AMA-WIN-0420,AMAT
+P2200415,Liner Quartz 421,Liner Quartz for Endura,Endura,TEL-LIN-0421,TEL
+P2200416,PM Kit 422,PM Kit for Etch Module,Etch Module,LAM-PM -0422,Lam Research
+P2200417,Throttle Valve 423,Throttle Valve for Implant Module,Implant Module,ASM-THR-0423,ASML
+P2200418,Ceramic Ring 424,Ceramic Ring for Vantage Radox,Vantage Radox,AMA-CER-0424,AMAT
+P2200419,Focus Ring 425,Focus Ring for Endura,Endura,TEL-FOC-0425,TEL
+P2200420,Shower Head 426,Shower Head for Etch Module,Etch Module,LAM-SHO-0426,Lam Research
+P2200421,ESC Chuck 427,ESC Chuck for Implant Module,Implant Module,ASM-ESC-0427,ASML
+P2200422,O-ring 428,O-ring for Vantage Radox,Vantage Radox,AMA-OR-0428,AMAT
+P2200423,Bellows 429,Bellows for Endura,Endura,TEL-BEL-0429,TEL
+P2200424,RF Match 430,RF Match for Etch Module,Etch Module,LAM-RF -0430,Lam Research
+P2200425,Gas Line Filter 431,Gas Line Filter for Implant Module,Implant Module,ASM-GAS-0431,ASML
+P2200426,Quartz Tube 432,Quartz Tube for Vantage Radox,Vantage Radox,AMA-QUA-0432,AMAT
+P2200427,Edge Ring 433,Edge Ring for Endura,Endura,TEL-EDG-0433,TEL
+P2200428,Clamp Ring 434,Clamp Ring for Etch Module,Etch Module,LAM-CLA-0434,Lam Research
+P2200429,Slit Valve 435,Slit Valve for Implant Module,Implant Module,ASM-SLI-0435,ASML
+P2200430,Gate Valve 436,Gate Valve for Vantage Radox,Vantage Radox,AMA-GAT-0436,AMAT
+P2200431,Heater Block 437,Heater Block for Endura,Endura,TEL-HEA-0437,TEL
+P2200432,Susceptor 438,Susceptor for Etch Module,Etch Module,LAM-SUS-0438,Lam Research
+P2200433,Robot Blade 439,Robot Blade for Implant Module,Implant Module,ASM-ROB-0439,ASML
+P2200434,Vacuum Gauge 440,Vacuum Gauge for Vantage Radox,Vantage Radox,AMA-VAC-0440,AMAT
+P2200435,MFC 441,MFC for Endura,Endura,TEL-MFC-0441,TEL
+P2200436,Turbo Pump 442,Turbo Pump for Etch Module,Etch Module,LAM-TUR-0442,Lam Research
+P2200437,Dry Pump 443,Dry Pump for Implant Module,Implant Module,ASM-DRY-0443,ASML
+P2200438,Cooling Plate 444,Cooling Plate for Vantage Radox,Vantage Radox,AMA-COO-0444,AMAT
+P2200439,Ceramic Plate 445,Ceramic Plate for Endura,Endura,TEL-CER-0445,TEL
+P2200440,Ion Source 446,Ion Source for Etch Module,Etch Module,LAM-ION-0446,Lam Research
+P2200441,Chamber Wall 447,Chamber Wall for Implant Module,Implant Module,ASM-CHA-0447,ASML
+P2200442,Nozzle 448,Nozzle for Vantage Radox,Vantage Radox,AMA-NOZ-0448,AMAT
+P2200443,Diffuser 449,Diffuser for Endura,Endura,TEL-DIF-0449,TEL
+P2200444,Window Quartz 450,Window Quartz for Etch Module,Etch Module,LAM-WIN-0450,Lam Research
+P2200445,Liner Quartz 451,Liner Quartz for Implant Module,Implant Module,ASM-LIN-0451,ASML
+P2200446,PM Kit 452,PM Kit for Vantage Radox,Vantage Radox,AMA-PM -0452,AMAT
+P2200447,Throttle Valve 453,Throttle Valve for Endura,Endura,TEL-THR-0453,TEL
+P2200448,Ceramic Ring 454,Ceramic Ring for Etch Module,Etch Module,LAM-CER-0454,Lam Research
+P2200449,Focus Ring 455,Focus Ring for Implant Module,Implant Module,ASM-FOC-0455,ASML
+P2200450,Shower Head 456,Shower Head for Vantage Radox,Vantage Radox,AMA-SHO-0456,AMAT
+P2200451,ESC Chuck 457,ESC Chuck for Endura,Endura,TEL-ESC-0457,TEL
+P2200452,O-ring 458,O-ring for Etch Module,Etch Module,LAM-OR-0458,Lam Research
+P2200453,Bellows 459,Bellows for Implant Module,Implant Module,ASM-BEL-0459,ASML
+P2200454,RF Match 460,RF Match for Vantage Radox,Vantage Radox,AMA-RF -0460,AMAT
+P2200455,Gas Line Filter 461,Gas Line Filter for Endura,Endura,TEL-GAS-0461,TEL
+P2200456,Quartz Tube 462,Quartz Tube for Etch Module,Etch Module,LAM-QUA-0462,Lam Research
+P2200457,Edge Ring 463,Edge Ring for Implant Module,Implant Module,ASM-EDG-0463,ASML
+P2200458,Clamp Ring 464,Clamp Ring for Vantage Radox,Vantage Radox,AMA-CLA-0464,AMAT
+P2200459,Slit Valve 465,Slit Valve for Endura,Endura,TEL-SLI-0465,TEL
+P2200460,Gate Valve 466,Gate Valve for Etch Module,Etch Module,LAM-GAT-0466,Lam Research
+P2200461,Heater Block 467,Heater Block for Implant Module,Implant Module,ASM-HEA-0467,ASML
+P2200462,Susceptor 468,Susceptor for Vantage Radox,Vantage Radox,AMA-SUS-0468,AMAT
+P2200463,Robot Blade 469,Robot Blade for Endura,Endura,TEL-ROB-0469,TEL
+P2200464,Vacuum Gauge 470,Vacuum Gauge for Etch Module,Etch Module,LAM-VAC-0470,Lam Research
+P2200465,MFC 471,MFC for Implant Module,Implant Module,ASM-MFC-0471,ASML
+P2200466,Turbo Pump 472,Turbo Pump for Vantage Radox,Vantage Radox,AMA-TUR-0472,AMAT
+P2200467,Dry Pump 473,Dry Pump for Endura,Endura,TEL-DRY-0473,TEL
+P2200468,Cooling Plate 474,Cooling Plate for Etch Module,Etch Module,LAM-COO-0474,Lam Research
+P2200469,Ceramic Plate 475,Ceramic Plate for Implant Module,Implant Module,ASM-CER-0475,ASML
+P2200470,Ion Source 476,Ion Source for Vantage Radox,Vantage Radox,AMA-ION-0476,AMAT
+P2200471,Chamber Wall 477,Chamber Wall for Endura,Endura,TEL-CHA-0477,TEL
+P2200472,Nozzle 478,Nozzle for Etch Module,Etch Module,LAM-NOZ-0478,Lam Research
+P2200473,Diffuser 479,Diffuser for Implant Module,Implant Module,ASM-DIF-0479,ASML
+P2200474,Window Quartz 480,Window Quartz for Vantage Radox,Vantage Radox,AMA-WIN-0480,AMAT
+P2200475,Liner Quartz 481,Liner Quartz for Endura,Endura,TEL-LIN-0481,TEL
+P2200476,PM Kit 482,PM Kit for Etch Module,Etch Module,LAM-PM -0482,Lam Research
+P2200477,Throttle Valve 483,Throttle Valve for Implant Module,Implant Module,ASM-THR-0483,ASML
+P2200478,Ceramic Ring 484,Ceramic Ring for Vantage Radox,Vantage Radox,AMA-CER-0484,AMAT
+P2200479,Focus Ring 485,Focus Ring for Endura,Endura,TEL-FOC-0485,TEL
+P2200480,Shower Head 486,Shower Head for Etch Module,Etch Module,LAM-SHO-0486,Lam Research
+P2200481,ESC Chuck 487,ESC Chuck for Implant Module,Implant Module,ASM-ESC-0487,ASML
+P2200482,O-ring 488,O-ring for Vantage Radox,Vantage Radox,AMA-OR-0488,AMAT
+P2200483,Bellows 489,Bellows for Endura,Endura,TEL-BEL-0489,TEL
+P2200484,RF Match 490,RF Match for Etch Module,Etch Module,LAM-RF -0490,Lam Research
+P2200485,Gas Line Filter 491,Gas Line Filter for Implant Module,Implant Module,ASM-GAS-0491,ASML
+P2200486,Quartz Tube 492,Quartz Tube for Vantage Radox,Vantage Radox,AMA-QUA-0492,AMAT
+P2200487,Edge Ring 493,Edge Ring for Endura,Endura,TEL-EDG-0493,TEL
+P2200488,Clamp Ring 494,Clamp Ring for Etch Module,Etch Module,LAM-CLA-0494,Lam Research
+P2200489,Slit Valve 495,Slit Valve for Implant Module,Implant Module,ASM-SLI-0495,ASML
+P2200490,Gate Valve 496,Gate Valve for Vantage Radox,Vantage Radox,AMA-GAT-0496,AMAT
+P2200491,Heater Block 497,Heater Block for Endura,Endura,TEL-HEA-0497,TEL
+P2200492,Susceptor 498,Susceptor for Etch Module,Etch Module,LAM-SUS-0498,Lam Research
+P2200493,Robot Blade 499,Robot Blade for Implant Module,Implant Module,ASM-ROB-0499,ASML
