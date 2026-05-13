@@ -13,15 +13,18 @@ if str(SRC) not in sys.path:
 from part_finder.agent import answer_query_result
 
 
-def _print_answer_with_optional_retry(query: str, top_k: int) -> dict[str, object] | None:
+def _print_answer_with_optional_retry(query: str, top_k: int, allow_retry: bool = True) -> dict[str, object] | None:
     result = answer_query_result(query, top_k=top_k)
     print(result.answer)
     if result.pending_confirmation:
         return result.pending_confirmation
-    if not result.needs_retry or not sys.stdin.isatty():
+    if not allow_retry or not result.needs_retry or not sys.stdin.isatty():
         return None
 
-    retry_query = input("파트 영문명 입력: ").strip()
+    try:
+        retry_query = input("파트 영문명 입력: ").strip()
+    except EOFError:
+        return None
     if not retry_query:
         return None
     retry_result = answer_query_result(retry_query, top_k=top_k)
@@ -36,7 +39,7 @@ def main() -> int:
     args = parser.parse_args()
 
     if args.query:
-        _print_answer_with_optional_retry(" ".join(args.query), args.top_k)
+        _print_answer_with_optional_retry(" ".join(args.query), args.top_k, allow_retry=False)
         return 0
 
     pending_confirmation: dict[str, object] | None = None

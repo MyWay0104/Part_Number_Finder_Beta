@@ -2,16 +2,18 @@ from __future__ import annotations
 
 import math
 import re
+import json
 from collections import Counter
 from dataclasses import dataclass
 from functools import lru_cache
 from typing import Iterable
 
-from part_finder.data_loader import load_part_data
+from part_finder.config import SEMANTIC_HINTS_PATH
+from part_finder.data_loader import load_aliases, load_part_data
 from part_finder.normalizer import simplify_text
 
 
-SEMANTIC_HINTS = {
+DEFAULT_SEMANTIC_HINTS = {
     "Robot Blade": [
         "robot arm pick transfer wafer handler end effector blade",
         "robot blade arm pick place part",
@@ -24,6 +26,25 @@ SEMANTIC_HINTS = {
     "Throttle Valve": ["pressure control valve throttle valve"],
     "Shower Head": ["gas distribution plate showerhead gas injection"],
 }
+
+
+def _load_semantic_hints() -> dict[str, list[str]]:
+    hints = {key: list(values) for key, values in DEFAULT_SEMANTIC_HINTS.items()}
+    if SEMANTIC_HINTS_PATH.exists():
+        try:
+            with SEMANTIC_HINTS_PATH.open("r", encoding="utf-8") as file:
+                data = json.load(file)
+            if isinstance(data, dict):
+                for key, values in data.items():
+                    if isinstance(values, list):
+                        hints.setdefault(str(key), [])
+                        hints[str(key)].extend(str(value) for value in values)
+        except Exception:
+            pass
+    return hints
+
+
+SEMANTIC_HINTS = _load_semantic_hints()
 
 
 @dataclass(frozen=True)
@@ -65,17 +86,32 @@ def build_part_chunks(rows: Iterable[dict[str, str]] | None = None) -> list[Part
     """
     source_rows = list(rows if rows is not None else load_part_data())
     chunks: list[PartChunk] = []
+    aliases = load_aliases()
     for index, row in enumerate(source_rows):
         base_name = _base_part_name(row)
+        normalized_tokens = " ".join(sorted(set(_tokenize(" ".join(row.values())))))
+        alias_text = " ".join(aliases.get(base_name, []))
+        hint_text = " ".join(SEMANTIC_HINTS.get(base_name, []))
         fields = [
+            "part_number",
             row.get("part_number", ""),
+            "part_name",
             row.get("part_name", ""),
+            "description",
             row.get("description", ""),
+            "equipment_module",
             row.get("equipment_module", ""),
+            "vendor_part_number",
             row.get("vendor_part_number", ""),
+            "vendor",
             row.get("vendor", ""),
+            "aliases",
+            alias_text,
+            "normalized_tokens",
+            normalized_tokens,
+            "semantic_hints",
+            hint_text,
             base_name,
-            *SEMANTIC_HINTS.get(base_name, []),
         ]
         text = " | ".join(field for field in fields if field)
         chunks.append(PartChunk(chunk_id=f"part-row-{index}", text=text, row=row))

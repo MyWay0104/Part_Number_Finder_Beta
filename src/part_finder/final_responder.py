@@ -5,12 +5,20 @@ import re
 from typing import Any
 
 from part_finder.config import configure_ollama_env, get_ollama_model, is_llm_enabled
+from part_finder.tracing import start_trace, trace_span
 
 
 LOW_CONFIDENCE_MESSAGE = (
-    "지금 데이터에서는 확실한 파트넘버를 찾지 못했습니다. "
-    "장비명, 벤더, 파트 영문명, 기능 설명 중 하나를 조금 더 알려주시면 다시 찾아볼게요."
+    "현재 CSV에서 조건에 맞는 Part Number를 찾지 못했습니다."
 )
+
+
+def _score_100(row: dict[str, object]) -> float:
+    try:
+        score = float(row.get("score", 0.0))
+    except (TypeError, ValueError):
+        return 0.0
+    return score * 100 if score <= 1.0 else score
 
 
 def _public_row(row: dict[str, object]) -> dict[str, object]:
@@ -22,7 +30,9 @@ def _public_row(row: dict[str, object]) -> dict[str, object]:
         "equipment_module": row.get("equipment_module", ""),
         "vendor_part_number": row.get("vendor_part_number", ""),
         "score": row.get("score", 0.0),
+        "match_source": row.get("match_source", ""),
         "matched_query": row.get("matched_query", ""),
+        "search_reason": row.get("search_reason", ""),
         "semantic_match": bool(row.get("semantic_match")),
         "vector_match": bool(row.get("vector_match")),
     }
@@ -49,14 +59,15 @@ def _fallback_answer(
     if not results:
         return LOW_CONFIDENCE_MESSAGE
 
-    best_score = float(results[0].get("score", 0.0))
+    best = results[0]
+    best_score = _score_100(best)
     if best_score < 70.0:
         return LOW_CONFIDENCE_MESSAGE
 
-    best = results[0]
     display_name = str(best.get("description") or best.get("part_name") or normalized_query).strip()
-    if normalized_query and display_name.startswith(normalized_query):
-        display_name = normalized_query
+    normalized_display = normalized_query.strip()
+    if normalized_display and display_name.startswith(normalized_display):
+        display_name = normalized_display
     context = " / ".join(
         value
         for value in [
@@ -65,11 +76,9 @@ def _fallback_answer(
         ]
         if value
     )
-    part_numbers = ", ".join(str(result["part_number"]) for result in results)
-
-    compact_query = re.sub(r"[^a-z0-9]+", "", original_query.lower())
-    if normalized_query == "Window Quartz" and "wq" in compact_query:
-        return f"질문하신 W/Q는 {normalized_query}로 매칭되었습니다. 파트넘버는 {results[0]['part_number']} 입니다."
+    prefix = f"{context} 기준 " if context else ""
+    uncertain = str(best.get("match_source") or "") in {"semantic_catalog", "vector_semantic"} or best_score < 85.0
+    lead = "가장 가까운 후보로는 " if uncertain else ""
 
     if intent in {"lookup_details", "filter_parts", "aggregate_parts"} or requested_fields != ("part_number",):
         lines = []
@@ -81,11 +90,14 @@ def _fallback_answer(
                     values.append(f"{_field_label(field)}: {value}")
             if values:
                 lines.append("- " + " / ".join(values))
-        prefix = f"{context} 기준 " if context else ""
-        return f"{prefix}{display_name} 관련 결과입니다.\n" + "\n".join(lines)
+        if lines:
+            return f"{lead}{prefix}{display_name} 관련 결과입니다.\n" + "\n".join(lines)
 
-    prefix = f"{context} 기준 " if context else ""
-    return f"{prefix}{display_name}의 파트넘버는 {part_numbers} 입니다."
+    part_numbers = ", ".join(str(result["part_number"]) for result in results if result.get("part_number"))
+    compact_query = re.sub(r"[^a-z0-9]+", "", original_query.lower())
+    if normalized_query == "Window Quartz" and "wq" in compact_query:
+        return f"질문하신 W/Q는 {normalized_query}로 매칭되었습니다. 파트넘버는 {part_numbers} 입니다."
+    return f"{lead}{prefix}{display_name}의 파트넘버는 {part_numbers} 입니다."
 
 
 def _call_final_llm(payload: dict[str, Any]) -> str:
@@ -103,9 +115,10 @@ Answer in natural Korean unless the user clearly used only English.
 Hard rules:
 - Use only the part numbers and fields supplied in CANDIDATE_ROWS.
 - Do not invent, modify, or complete a part number.
-- If LAST_CONFIRM_STATUS is not "confirmed", ask a short clarification question.
-- Keep the answer concise and conversational, not a rigid template.
-- Mention uncertainty when match_source is semantic/vector or confidence is low.
+- If a match is semantic/vector or confidence is low, say it is the closest candidate.
+- Do not ask follow-up or confirmation questions. The current CLI is single-turn.
+- If LAST_CONFIRM_STATUS is not "confirmed", summarize the available candidates without asking the user to confirm.
+- Keep the answer concise.
 
 PAYLOAD:
 {json.dumps(payload, ensure_ascii=False, indent=2)}
@@ -128,8 +141,23 @@ def final_answer(
     last_confirm_status: str = "confirmed",
 ) -> str:
     fallback = _fallback_answer(original_query, normalized_query, results, requested_fields, intent)
+    trace = start_trace("final_responder", original_query, {})
+
+    def record(answer: str, fallback_used: bool, hallucination_guard_triggered: bool) -> str:
+        trace_span(
+            trace,
+            "final_response",
+            input_data={"candidate_rows_count": len(results), "last_confirm_status": last_confirm_status},
+            output_data={
+                "answer": answer,
+                "fallback_used": fallback_used,
+                "hallucination_guard_triggered": hallucination_guard_triggered,
+            },
+        )
+        return answer
+
     if not is_llm_enabled() or not results or last_confirm_status != "confirmed":
-        return fallback
+        return record(fallback, True, False)
 
     payload = {
         "user_query": original_query,
@@ -141,12 +169,19 @@ def final_answer(
     }
     llm_answer = _call_final_llm(payload)
     if not llm_answer:
-        return fallback
+        return record(fallback, True, False)
+
+    followup_patterns = ["더 알려주시면", "찾아보겠습니다", "확인하시겠습니까", "확인 필요", "'확인'", "확인이라고"]
+    if any(pattern in llm_answer for pattern in followup_patterns) or "?" in llm_answer:
+        return record(fallback, True, False)
 
     allowed_part_numbers = {str(row.get("part_number") or "") for row in results}
-    if not any(part_number and part_number in llm_answer for part_number in allowed_part_numbers):
-        return fallback
-    return llm_answer
+    mentioned_part_numbers = set(re.findall(r"P\d{7}", llm_answer))
+    hallucination_guard_triggered = bool(mentioned_part_numbers - allowed_part_numbers)
+    has_allowed_part_number = any(part_number and part_number in llm_answer for part_number in allowed_part_numbers)
+    if hallucination_guard_triggered or not has_allowed_part_number:
+        return record(fallback, True, hallucination_guard_triggered)
+    return record(llm_answer, False, False)
 
 
 def confirmation_prompt(
@@ -157,14 +192,14 @@ def confirmation_prompt(
     if not candidates:
         return LOW_CONFIDENCE_MESSAGE
 
-    best = candidates[0]
-    candidate_name = str(best.get("description") or best.get("part_name") or best.get("matched_query") or "").strip()
-    part_number = str(best.get("part_number") or "").strip()
-    score = float(best.get("score", 0.0))
-    return (
-        f"말씀하신 표현은 데이터의 정확한 파트명과 완전히 일치하지는 않습니다. "
-        f"의미상으로는 {candidate_name}"
-        f"{f' ({part_number})' if part_number else ''} 쪽이 가장 가까워 보입니다"
-        f"{f' (유사도 {score:.1f})' if score else ''}. "
-        "이 파트를 찾으신 게 맞으면 '확인'이라고 답해주세요. 아니면 장비명이나 기능을 조금 더 알려주세요."
-    )
+    lines = []
+    for index, row in enumerate(candidates[:5], start=1):
+        name = str(row.get("description") or row.get("part_name") or row.get("matched_query") or "").strip()
+        part_number = str(row.get("part_number") or "").strip()
+        vendor = str(row.get("vendor") or "").strip()
+        module = str(row.get("equipment_module") or "").strip()
+        context = " / ".join(value for value in [vendor, module] if value)
+        lines.append(f"{index}. {name} - {part_number}{f' ({context})' if context else ''}")
+
+    reason_text = f" {reason}" if reason else ""
+    return f"표현이 정확한 파트명과 완전히 일치하지 않아 가장 가까운 후보를 찾았습니다.{reason_text}\n" + "\n".join(lines)

@@ -51,7 +51,7 @@ def test_agent_asks_confirmation_for_semantic_robot_arm_pick(monkeypatch):
     assert not result.needs_retry
     assert result.pending_confirmation
     assert "Robot Blade" in result.answer
-    assert "확인" in result.answer
+    assert "확인" not in result.answer
 
 
 def test_agent_returns_semantic_candidate_after_confirmation(monkeypatch):
@@ -63,3 +63,25 @@ def test_agent_returns_semantic_candidate_after_confirmation(monkeypatch):
     assert not result.needs_retry
     assert "Robot Blade" in result.answer
     assert "P2200013" in result.answer
+
+
+def test_agent_does_not_drift_part_family_when_vendor_has_no_match(monkeypatch):
+    monkeypatch.setenv("PART_FINDER_USE_LLM", "0")
+
+    result = answer_query_result("로봇블레이드 파트넘버. AMAT 장비 기준으로.", top_k=3)
+
+    assert result.needs_retry
+    assert result.rows == []
+    assert "Gate Valve" not in result.answer
+    assert "Cooling Plate" not in result.answer
+
+
+def test_agentic_langgraph_multi_part_lookup(monkeypatch):
+    monkeypatch.setenv("PART_FINDER_USE_LLM", "0")
+
+    result = answer_query_result("AMAT 기준으로 터보펌프랑 로봇블레이드 파트넘버 알려줘", top_k=3)
+
+    assert "Turbo Pump" in result.answer
+    assert "P2200046" in result.answer
+    assert "Robot Blade" in result.answer
+    assert "AMAT 조건" in result.answer

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from difflib import SequenceMatcher
-from typing import Iterable
+from typing import Any, Iterable
 
 try:
     from rapidfuzz import fuzz
@@ -10,7 +10,7 @@ except ImportError:  # pragma: no cover - exercised only when rapidfuzz is absen
 
 from part_finder.data_loader import load_part_data
 from part_finder.normalizer import normalize_query, simplify_text
-from part_finder.tracing import traced_tool
+from part_finder.tracing import start_trace, trace_span, traced_tool
 from part_finder.vector_index import SEMANTIC_HINTS, vector_search
 
 
@@ -78,6 +78,64 @@ def _dedupe_rows(rows: Iterable[dict[str, object]], limit: int) -> list[dict[str
         if len(results) >= limit:
             break
     return results
+
+
+def _route_value(route: Any, name: str, default: Any = None) -> Any:
+    if isinstance(route, dict):
+        return route.get(name, default)
+    return getattr(route, name, default)
+
+
+def _merge_candidate(
+    merged: dict[str, dict[str, object]],
+    row: dict[str, object],
+    source: str,
+    matched_query: str,
+    score: float,
+    reason: str,
+) -> None:
+    part_number = str(row.get("part_number") or "")
+    if not part_number:
+        return
+    existing = merged.get(part_number)
+    reason_piece = f"{source}:{matched_query} ({reason})"
+    if existing is None:
+        merged[part_number] = {
+            **row,
+            "score": round(score, 4),
+            "match_source": source,
+            "matched_query": matched_query,
+            "search_reason": reason_piece,
+        }
+        return
+    existing_score = float(existing.get("score", 0.0))
+    if score > existing_score:
+        existing.update(
+            {
+                **row,
+                "score": round(score, 4),
+                "match_source": source,
+                "matched_query": matched_query,
+            }
+        )
+    reasons = str(existing.get("search_reason") or "")
+    if reason_piece not in reasons:
+        existing["search_reason"] = f"{reasons}; {reason_piece}" if reasons else reason_piece
+
+
+def _limit_public_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
+    allowed = {
+        "part_number",
+        "part_name",
+        "description",
+        "vendor",
+        "equipment_module",
+        "score",
+        "match_source",
+        "matched_query",
+        "search_reason",
+    }
+    return [{key: row.get(key, "") for key in allowed if key in row} for row in rows]
 
 
 @traced_tool("search_part_numbers")
@@ -332,3 +390,77 @@ def hybrid_search_tool(
     vendor_query: str = "",
 ) -> list[dict[str, object]]:
     return search_part_numbers(query, top_k=top_k, equipment_query=equipment_query, vendor_query=vendor_query)
+
+
+@traced_tool("agentic_part_search_tool")
+def agentic_part_search_tool(query_plan: Any, top_k: int = 5) -> list[dict[str, object]]:
+    """Aggregate exact, alias, phonetic, semantic, and vector search results."""
+    normalized = str(_route_value(query_plan, "normalized_query", "") or "")
+    candidate_queries = list(_route_value(query_plan, "candidate_queries", ()) or ())
+    phonetic_candidates = list(_route_value(query_plan, "phonetic_english_candidates", ()) or ())
+    semantic_queries = list(_route_value(query_plan, "semantic_queries", ()) or _route_value(query_plan, "semantic_candidates", ()) or ())
+    vendor_query = str(_route_value(query_plan, "vendor", "") or _route_value(query_plan, "vendor_query", "") or "")
+    equipment_query = str(_route_value(query_plan, "equipment", "") or _route_value(query_plan, "equipment_query", "") or "")
+
+    queries = []
+    context_keys = {simplify_text(value) for value in [vendor_query, equipment_query] if value}
+    for value in [normalized, *candidate_queries]:
+        if value and simplify_text(value) not in context_keys and value not in queries:
+            queries.append(value)
+
+    merged: dict[str, dict[str, object]] = {}
+    counts = {
+        "exact_count": 0,
+        "alias_count": 0,
+        "abbreviation_count": 0,
+        "phonetic_count": 0,
+        "semantic_catalog_count": 0,
+        "vector_semantic_count": 0,
+    }
+
+    for query in queries:
+        rows = search_part_numbers(query, top_k=max(top_k, 10), equipment_query=equipment_query, vendor_query=vendor_query)
+        for row in rows:
+            raw_score = float(row.get("score", 0.0))
+            source = "exact" if raw_score >= 99.0 else "alias"
+            score = 1.0 if source == "exact" else 0.95
+            counts["exact_count" if source == "exact" else "alias_count"] += 1
+            _merge_candidate(merged, row, source, query, score, "name or alias match")
+
+    for query in phonetic_candidates:
+        rows = search_part_numbers(query, top_k=max(top_k, 10), equipment_query=equipment_query, vendor_query=vendor_query)
+        for row in rows:
+            counts["phonetic_count"] += 1
+            _merge_candidate(merged, row, "phonetic", query, 0.80, "Korean pronunciation mapped to English term")
+
+    for query in semantic_queries:
+        rows = semantic_catalog_match_tool(query, top_k=max(top_k, 10), equipment_query=equipment_query, vendor_query=vendor_query)
+        for row in rows:
+            counts["semantic_catalog_count"] += 1
+            _merge_candidate(merged, row, "semantic_catalog", query, 0.70, "semantic catalog hint match")
+
+        vector_rows = vector_semantic_search_tool(query, top_k=max(top_k, 10), equipment_query=equipment_query, vendor_query=vendor_query)
+        for row in vector_rows:
+            counts["vector_semantic_count"] += 1
+            _merge_candidate(merged, row, "vector_semantic", query, 0.60, "TF-IDF row semantic match")
+
+    results = list(merged.values())
+    results.sort(key=lambda item: (-float(item.get("score", 0.0)), str(item.get("part_number", ""))))
+    top_results = results[:top_k]
+    counts["final_top_k_count"] = len(top_results)
+
+    trace = start_trace("agentic_part_search_tool", normalized, {})
+    trace_span(
+        trace,
+        "search_source_counts",
+        input_data={
+            "normalized_query": normalized,
+            "candidate_queries": candidate_queries,
+            "phonetic_english_candidates": phonetic_candidates,
+            "semantic_queries": semantic_queries,
+            "vendor": vendor_query,
+            "equipment": equipment_query,
+        },
+        output_data={**counts, "top_candidates": _limit_public_rows(top_results)},
+    )
+    return top_results

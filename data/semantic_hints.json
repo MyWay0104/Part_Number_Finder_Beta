@@ -1,0 +1,13 @@
+{
+  "Throttle Valve": ["valve", "flow control", "pressure control", "throttle", "gas flow"],
+  "Clamp Ring": ["clamp", "holder", "fixing", "grip", "wafer holding", "chucking", "holding clamp", "clamping part"],
+  "ESC Chuck": ["clamp", "chuck", "wafer holder", "wafer holding", "electrostatic chuck", "stage", "grip"],
+  "Robot Blade": ["robot arm", "wafer transfer", "pick", "blade", "end effector", "robot blade", "wafer handling"],
+  "MFC": ["mass flow controller", "gas flow", "flow control", "gas controller"],
+  "O-ring": ["seal", "sealing", "leak prevention", "o ring", "o-ring"],
+  "Vacuum Gauge": ["pressure gauge", "vacuum gauge", "measurement", "pressure measurement", "sensor"],
+  "Liner Quartz": ["quartz liner", "liner quartz", "chamber liner", "process chamber protection", "quartz"],
+  "Gate Valve": ["valve", "isolation valve", "gate", "chamber isolation"],
+  "Slit Valve": ["valve", "slit door", "transfer opening", "slot valve"],
+  "RF Match": ["rf", "radio frequency", "matching network", "impedance matching"]
+}

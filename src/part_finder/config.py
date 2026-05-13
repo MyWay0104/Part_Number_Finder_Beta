@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+from dataclasses import dataclass
 
 
 # Keep all paths relative to the repository root so the CLI and tests behave the
@@ -9,6 +10,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_ROOT / "data"
 ALIASES_PATH = DATA_DIR / "aliases.json"
+SEMANTIC_HINTS_PATH = DATA_DIR / "semantic_hints.json"
 DEFAULT_CSV_PATH = DATA_DIR / "part_numbers.csv"
 DEFAULT_DB_PATH = PROJECT_ROOT / "Part_Number.db"
 ENV_PATH = PROJECT_ROOT / ".env"
@@ -63,19 +65,48 @@ def is_llm_enabled() -> bool:
     return value.strip().lower() not in {"0", "false", "no", "off"}
 
 
-def configure_langsmith_env() -> bool:
-    """Load .env and expose LangSmith vars to LangChain/LangSmith clients."""
+@dataclass(frozen=True)
+class LangfuseConfig:
+    trace_langfuse: bool
+    langfuse_public_key: str | None
+    langfuse_secret_key: str | None
+    langfuse_base_url: str | None
+    langfuse_host: str | None
+    langfuse_project: str | None
+
+
+def get_langfuse_config() -> LangfuseConfig:
+    """Return optional Langfuse tracing settings.
+
+    LangSmith flags are still read for backward compatibility, but they no
+    longer enable the default tracing backend.
+    """
     load_project_env()
 
-    trace_flag = os.getenv("PART_FINDER_TRACE_LANGSMITH")
-    if trace_flag is not None and not truthy(trace_flag):
-        os.environ["LANGSMITH_TRACING"] = "false"
-        os.environ["LANGCHAIN_TRACING_V2"] = "false"
-        return False
+    trace_flag = os.getenv("PART_FINDER_TRACE_LANGFUSE")
+    trace_enabled = truthy(trace_flag)
+    public_key = os.getenv("LANGFUSE_PUBLIC_KEY") or None
+    secret_key = os.getenv("LANGFUSE_SECRET_KEY") or None
+    base_url = os.getenv("LANGFUSE_BASE_URL") or os.getenv("LANGFUSE_HOST") or None
+    host = os.getenv("LANGFUSE_HOST") or None
+    project = os.getenv("LANGFUSE_PROJECT") or "part-number-finder"
+    return LangfuseConfig(
+        trace_langfuse=bool(trace_enabled and public_key and secret_key),
+        langfuse_public_key=public_key,
+        langfuse_secret_key=secret_key,
+        langfuse_base_url=base_url,
+        langfuse_host=host,
+        langfuse_project=project,
+    )
 
-    if truthy(os.getenv("LANGSMITH_TRACING")):
-        os.environ.setdefault("LANGCHAIN_TRACING_V2", "true")
 
+def configure_langsmith_env() -> bool:
+    """Backward-compatible no-op for older callers.
+
+    The project now uses Langfuse. Explicit LangSmith tracing is disabled here
+    so restricted environments do not try to contact LangSmith.
+    """
+    load_project_env()
     aliases = {
         "LANGSMITH_ENDPOINT": "LANGCHAIN_ENDPOINT",
         "LANGSMITH_API_KEY": "LANGCHAIN_API_KEY",
@@ -85,7 +116,8 @@ def configure_langsmith_env() -> bool:
         value = os.getenv(source)
         if value:
             os.environ.setdefault(target, value)
-
+    if truthy(os.getenv("LANGSMITH_TRACING")):
+        os.environ.setdefault("LANGCHAIN_TRACING_V2", "true")
     return bool(
         truthy(os.getenv("LANGSMITH_TRACING"))
         and os.getenv("LANGSMITH_API_KEY")
