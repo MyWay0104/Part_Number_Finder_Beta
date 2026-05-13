@@ -344,8 +344,9 @@ def answer_query_result(
     query: str,
     top_k: int = 3,
     pending_confirmation: dict[str, object] | None = None,
+    metadata: dict[str, Any] | None = None,
 ) -> AnswerResult:
-    trace = start_trace("part_number_finder_agent", query, {})
+    trace = start_trace("part_number_finder_agent", query, metadata or {})
     try:
         if pending_confirmation and _is_confirmation(query):
             rows = list(pending_confirmation.get("candidate_rows") or [])

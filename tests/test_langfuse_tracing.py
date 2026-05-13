@@ -39,6 +39,24 @@ def test_tracing_disabled_pytest_path_passes(monkeypatch):
     assert get_langfuse_client() is None
 
 
+def test_answer_query_result_passes_metadata_to_trace(monkeypatch):
+    captured: dict[str, object] = {}
+
+    def fake_start_trace(name, user_query="", metadata=None):
+        captured["name"] = name
+        captured["user_query"] = user_query
+        captured["metadata"] = metadata
+        return None
+
+    monkeypatch.setenv("PART_FINDER_USE_LLM", "0")
+    monkeypatch.setattr("part_finder.agent.start_trace", fake_start_trace)
+
+    answer_query_result("AMAT Endura Chamber Wall 파트번호 알려줘", metadata={"test_id": "1"})
+
+    assert captured["name"] == "part_number_finder_agent"
+    assert captured["metadata"] == {"test_id": "1"}
+
+
 def test_failure_log_independent_from_langfuse(tmp_path, monkeypatch):
     monkeypatch.setenv("PART_FINDER_TRACE_LANGFUSE", "1")
     monkeypatch.setenv("LANGFUSE_PUBLIC_KEY", "public")

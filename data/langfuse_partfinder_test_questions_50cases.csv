@@ -1,0 +1,51 @@
+﻿Test_ID,Question,Validation_Target,Evaluation_Point
+1,AMAT Endura Chamber Wall 파트번호 알려줘,Exact Match,"Top-1 정확도, Hallucination 여부"
+2,Helios XP PM Kit 찾아줘,PM Kit 검색,장비 매칭 정확도
+3,ESC Heater part number 뭐야?,영문 검색,영문 Query recall
+4,APC Valve 파트번호 알려줘,장비 공통 부품,다중 후보 ranking
+5,MFC 교체용 파트번호 조회,Generic Part,Generic query 처리
+6,쓰로틀밸브 파트번호 알려줘,Throttle Valve Alias,한국어 alias 매핑
+7,챔버월 부품번호 찾아줘,Chamber Wall Alias,한글 alias recall
+8,가스라인 필터 찾아줘,Gas Line Filter,Semantic retrieval
+9,오링 키트 번호 알려줘,O-Ring Kit,소모품 검색 정확도
+10,히터블록 파트넘버 알려줘,Heater Block,한글 자연어 처리
+11,TV 파트번호 뭐야?,TV → Throttle Valve,약어 alias 처리
+12,ESC assy 번호 알려줘,ESC abbreviation,assy suffix 처리
+13,RF Match 부품 찾아줘,RF Match,RF 관련 part ranking
+14,MFC calibration kit 있어?,약어 처리,MFC semantic recall
+15,APC assy 번호 알려줘,APC Alias,약어 + assy 처리
+16,Endura 장비 chamber wall 번호 알려줘,Mixed Query,한영 혼합 robustness
+17,Helios XP용 throttle valve 찾아줘,혼합 검색,장비+부품 filtering
+18,AMAT ESC heater 교체품 알려줘,Vendor + Part,Vendor filter 정확도
+19,챔버 wall kit 조회해줘,한영 혼합,혼합 query embedding
+20,RF match 부품번호 찾아줘,띄어쓰기 변형,Tokenization robustness
+21,AMAT 제조사 throttle valve 알려줘,Vendor Filtering,Vendor 우선순위
+22,TEL 장비용 APC valve 있어?,제조사 구분,Vendor mismatch 방지
+23,Lam Research ESC heater 찾아줘,Vendor Match,Vendor exact retrieval
+24,Applied Materials PM kit 번호 알려줘,Vendor Full Name,Vendor alias 처리
+25,DNS chamber kit 알려줘,Vendor Alias,Vendor 축약어 처리
+26,trottle valve 번호 알려줘,throttle 오타,Typo tolerance
+27,chambar wall part 알려줘,chamber 오타,오타 recall
+28,helios pmk kit 찾아줘,PM kit typo,오타 semantic matching
+29,esc hater part number,heater typo,오타 robustness
+30,mfc cal kit 머야,자연어 + 오타,Casual query 대응
+31,wall part 찾아줘,Clarification 필요,Clarification 유도 여부
+32,valve 번호 알려줘,다중 후보 처리,Broad query ranking
+33,heater assy 있어?,Broad Query,Candidate ranking
+34,chamber 관련 부품 보여줘,Multi Candidate,Top-K 품질
+35,PM kit 추천해줘,장비 미지정,불충분 정보 대응
+36,가스 유량 제어하는 부품 찾아줘,의미 기반 검색,Semantic understanding
+37,플라즈마 RF 관련 부품번호 알려줘,Semantic Search,설명 기반 retrieval
+38,챔버 내부 온도 올리는 히터 찾아줘,설명 기반 검색,기능 설명 recall
+39,진공 압력 조절하는 밸브 뭐야,기능 기반 검색,기능 semantic mapping
+40,maintenance용 교체 kit 보여줘,PM Kit 추론,maintenance semantic recall
+41,아이폰 충전기 파트번호 알려줘,Domain Guard,Out-of-domain 차단
+42,자동차 엔진오일 필터 찾아줘,Out-of-domain,Hallucination 방지
+43,삼성 TV 리모컨 부품번호,Irrelevant Query,도메인 guardrail
+44,CPU 그래픽카드 추천해줘,Non-semiconductor,무관 질의 차단
+45,치킨 추천해줘,완전 무관 질문,Fallback 응답 품질
+46,엔듀라용 wall 관련 파트 알려줘,후보 Ranking,Top-K ranking
+47,throttle 관련 부품 다 보여줘,Similar Candidate,Category retrieval
+48,ESC 계열 파트번호 추천해줘,Category Retrieval,계열 검색 품질
+49,chamber kit 중 가장 유사한 거 찾아줘,Similarity Ranking,Similarity scoring
+50,RF match 부품 후보 3개만 보여줘,Top-K Retrieval,Top-K 응답 품질
